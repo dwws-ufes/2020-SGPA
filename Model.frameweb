@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frameweb:FramewebProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:frameweb="http://nemo.inf.ufes.br/projects/frameweb/FW-2015" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <compose xsi:type="frameweb:EntityModel" name="Entity Model">
+    <packagedElement xsi:type="frameweb:DomainPackage" name="br.ufes.informatica.doeLivros.core.domain">
+      <packagedElement xsi:type="frameweb:DomainClass" name="User">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="nickname" visibility="private" isNull="true">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="email" visibility="private" size="150">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="password" visibility="private" size="10">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Character"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DomainClass" name="Role">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="name" visibility="private" size="200">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DomainClass" name="Permission">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="name" visibility="private" size="100">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DomainAssociation" name="is" memberEnd="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is/Source //@compose.0/br.ufes.informatica.doeLivros.core.domain/is/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is/Target"/>
+        <ownedRule xsi:type="frameweb:VocabularyConstraints" name="Vocabulary Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is"/>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Source" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/User" association="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is"/>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Target" type="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Person" association="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DomainAssociation" name="is associated to" memberEnd="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is%20associated%20to/Source //@compose.0/br.ufes.informatica.doeLivros.core.domain/is%20associated%20to/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is%20associated%20to/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is%20associated%20to/Target"/>
+        <ownedRule xsi:type="frameweb:VocabularyConstraints" name="Vocabulary Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is%20associated%20to"/>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Source" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/User" association="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is%20associated%20to">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+        </ownedEnd>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Target" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/Role" isUnique="false" association="//@compose.0/br.ufes.informatica.doeLivros.core.domain/is%20associated%20to">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DomainAssociation" name="gives" memberEnd="//@compose.0/br.ufes.informatica.doeLivros.core.domain/gives/Source //@compose.0/br.ufes.informatica.doeLivros.core.domain/gives/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.core.domain/gives/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.core.domain/gives/Target"/>
+        <ownedRule xsi:type="frameweb:VocabularyConstraints" name="Vocabulary Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.core.domain/gives"/>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Source" visibility="private" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/Role" association="//@compose.0/br.ufes.informatica.doeLivros.core.domain/gives">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+        </ownedEnd>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Target" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/Permission" association="//@compose.0/br.ufes.informatica.doeLivros.core.domain/gives">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:DomainPackage" name="br.ufes.informatica.doeLivros.people.domain">
+      <packagedElement xsi:type="frameweb:DomainClass" name="Person">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="firstName" visibility="private" size="100">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="lastName" visibility="private" size="100">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="birthDate" visibility="private" isNull="true">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Date"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="registrationDate" visibility="private">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Date"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DomainClass" name="Address">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="country" visibility="private" size="100">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="province" visibility="private" size="100">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="city" visibility="private" size="100" isNull="true">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="zipCode" visibility="private" size="15">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DomainAssociation" name="has" memberEnd="//@compose.0/br.ufes.informatica.doeLivros.people.domain/has/Source //@compose.0/br.ufes.informatica.doeLivros.people.domain/has/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.people.domain/has/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.people.domain/has/Target"/>
+        <ownedRule xsi:type="frameweb:VocabularyConstraints" name="Vocabulary Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.people.domain/has"/>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Source" type="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Person" association="//@compose.0/br.ufes.informatica.doeLivros.people.domain/has"/>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Target" type="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Address" association="//@compose.0/br.ufes.informatica.doeLivros.people.domain/has">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DomainAssociation" name="Is Interested on" memberEnd="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Is%20Interested%20on/Source //@compose.0/br.ufes.informatica.doeLivros.people.domain/Is%20Interested%20on/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Is%20Interested%20on/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Is%20Interested%20on/Target"/>
+        <ownedRule xsi:type="frameweb:VocabularyConstraints" name="Vocabulary Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Is%20Interested%20on"/>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Source" type="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Person" association="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Is%20Interested%20on">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+          <defaultValue xsi:type="uml:LiteralString" value=""/>
+        </ownedEnd>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Target" type="//@compose.0/br.ufes.informatica.doeLivros.book.domain/Book" association="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Is%20Interested%20on">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DomainAssociation" name="Donates" memberEnd="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Donates/Source //@compose.0/br.ufes.informatica.doeLivros.people.domain/Donates/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Donates/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Donates/Target"/>
+        <ownedRule xsi:type="frameweb:VocabularyConstraints" name="Vocabulary Constraint" constrainedElement="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Donates"/>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Source" type="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Person" association="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Donates"/>
+        <ownedEnd xsi:type="frameweb:DomainProperty" name="Target" type="//@compose.0/br.ufes.informatica.doeLivros.book.domain/Book" association="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Donates">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:DomainPackage" name="br.ufes.informatica.doeLivros.book.domain">
+      <packagedElement xsi:type="frameweb:DomainClass" name="Book">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="title" visibility="private" size="300">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="author" visibility="private" size="200">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="genre" visibility="private" size="100" isNull="true">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="publicationYear" visibility="private" size="4" isNull="true">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="edition" visibility="private" isNull="true">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="volume" visibility="private" isNull="true">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="editor" visibility="private" size="150">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="availabilityDate" visibility="private">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Date"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+  </compose>
+  <compose xsi:type="frameweb:PersistenceModel" name="Persistence Model">
+    <packagedElement xsi:type="frameweb:PersistencePackage" name="br.ufes.informatica.doeLivros.core.persistence">
+      <packagedElement xsi:type="frameweb:DAOClass" name="UserDAOJPA">
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getUserByEmail" methodType="//@compose.0/br.ufes.informatica.doeLivros.core.domain/User">
+          <ownedParameter name="userEmail">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getUserList">
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedOperation>
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getUserByRole">
+          <ownedParameter name="role" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/Role"/>
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOClass" name="RoleDAOJPA">
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getRoleByPermission">
+          <ownedParameter name="permission" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/Permission"/>
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOClass" name="PermissionDAOJPA">
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getPermissionByRole">
+          <ownedParameter name="role" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/Role"/>
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="UserDAO"/>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="RoleDAO"/>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="PermissionDAO"/>
+      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/br.ufes.informatica.doeLivros.core.persistence/PermissionDAOJPA" supplier="//@compose.1/br.ufes.informatica.doeLivros.core.persistence/PermissionDAO"/>
+      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/br.ufes.informatica.doeLivros.core.persistence/RoleDAOJPA" supplier="//@compose.1/br.ufes.informatica.doeLivros.core.persistence/RoleDAO"/>
+      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/br.ufes.informatica.doeLivros.core.persistence/UserDAOJPA" supplier="//@compose.1/br.ufes.informatica.doeLivros.core.persistence/UserDAO"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:PersistencePackage" name="br.ufes.informatica.doeLivros.people.persistence">
+      <packagedElement xsi:type="frameweb:DAOClass" name="PersonDAOJPA">
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getPersonByUser" methodType="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Person">
+          <ownedParameter name="user" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/User"/>
+        </ownedOperation>
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getPersonList">
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOClass" name="AddressDAOJPA">
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getPersonAddress">
+          <ownedParameter name="personId">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Long"/>
+          </ownedParameter>
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="PersonDAO"/>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="AddressDAO"/>
+      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/br.ufes.informatica.doeLivros.people.persistence/PersonDAOJPA" supplier="//@compose.1/br.ufes.informatica.doeLivros.people.persistence/PersonDAO"/>
+      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/br.ufes.informatica.doeLivros.people.persistence/AddressDAOJPA" supplier="//@compose.1/br.ufes.informatica.doeLivros.people.persistence/AddressDAO"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:PersistencePackage" name="br.ufes.informatica.doeLivros.book.persistence">
+      <packagedElement xsi:type="frameweb:DAOClass" name="BookDAOJPA">
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getBookByTitle">
+          <ownedParameter name="title">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          </ownedParameter>
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedOperation>
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getBookByAuthor">
+          <ownedParameter name="author">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          </ownedParameter>
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedOperation>
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getBookDonator" methodType="//@compose.0/br.ufes.informatica.doeLivros.people.domain/Person">
+          <ownedParameter name="bookId">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Long"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getBookList">
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="BookDAO"/>
+      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/br.ufes.informatica.doeLivros.book.persistence/BookDAOJPA" supplier="//@compose.1/br.ufes.informatica.doeLivros.book.persistence/BookDAO"/>
+    </packagedElement>
+  </compose>
+  <compose xsi:type="frameweb:NavigationModel" name="Navigation Model">
+    <packagedElement xsi:type="frameweb:FrontControllerDependency"/>
+    <packagedElement xsi:type="frameweb:ResultDependency">
+      <resultDependencyConstraint result="success.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency">
+      <resultDependencyConstraint result="emailinuse.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ViewPackage" name="core/login">
+      <packagedElement xsi:type="frameweb:UIComponent" name="formLogin">
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="email" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="password" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/password"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="commandButton">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/commandButton"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:Page" name="index">
+        <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
+        <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole" type="//@compose.2/core%2Flogin/formLogin" association="//@compose.2/core%2Flogin/@packagedElement.3"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:NavigationAssociation">
+        <ownedEnd xsi:type="frameweb:NavigationCompositionPart"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:NavigationAssociation" memberEnd="//@compose.2/core%2Flogin/@packagedElement.3/@ownedEnd.0 //@compose.2/core%2Flogin/index/@ownedAttribute.1">
+        <ownedEnd xsi:type="frameweb:NavigationCompositionPart" type="//@compose.2/core%2Flogin/index" association="//@compose.2/core%2Flogin/@packagedElement.3"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ControllerPackage" name="br.ufes.informatica.doeLivros.core.controller">
+      <packagedElement xsi:type="frameweb:FrontControllerClass" name="AuthenticateController">
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="email" visibility="private">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="password" visibility="private">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="user" visibility="private" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/User"/>
+        <ownedOperation xsi:type="frameweb:FrontControllerMethod" name="validate">
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:FrontControllerClass" name="RegisterController">
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="user" visibility="private" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/User"/>
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="confirmPassword" visibility="private">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedAttribute>
+        <ownedOperation xsi:type="frameweb:FrontControllerMethod" name="register">
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.2/Source //@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.2/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.2/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.2/Target"/>
+        <ownedEnd name="Source" type="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController" association="//@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.2"/>
+        <ownedEnd name="Target" type="//@compose.3/br.ufes.informatica.doeLivros.core.application/RegisterService" association="//@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.2"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.3/Source //@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.3/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.3/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.3/Target"/>
+        <ownedEnd name="Source" type="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController" association="//@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.3"/>
+        <ownedEnd name="Target" type="//@compose.3/br.ufes.informatica.doeLivros.core.application/AuthenticateService" association="//@compose.2/br.ufes.informatica.doeLivros.core.controller/@packagedElement.3"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController/validate">
+      <resultDependencyConstraint result="index.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" supplier="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController" method="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController/validate"/>
+    <packagedElement xsi:type="frameweb:ViewPackage" name="core/pages">
+      <packagedElement xsi:type="frameweb:Page" name="home">
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="user.name">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/JSF-HTML/outputText"/>
+        </ownedAttribute>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController/validate">
+      <resultDependencyConstraint result="home.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ViewPackage" name="core/register">
+      <packagedElement xsi:type="frameweb:Page" name="index">
+        <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
+        <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole" type="//@compose.2/core%2Fregister/formRegister" association="//@compose.2/core%2Fregister/@packagedElement.3"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:UIComponent" name="formRegister">
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="user.email" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="user.password" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/password"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="confirmPassword" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/password"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="submit" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/commandButton"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:NavigationAssociation">
+        <ownedEnd xsi:type="frameweb:NavigationCompositionPart"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:NavigationAssociation" memberEnd="//@compose.2/core%2Fregister/@packagedElement.3/@ownedEnd.0 //@compose.2/core%2Fregister/index/@ownedAttribute.1">
+        <ownedEnd xsi:type="frameweb:NavigationCompositionPart" type="//@compose.2/core%2Fregister/index" association="//@compose.2/core%2Fregister/@packagedElement.3"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController/register">
+      <resultDependencyConstraint result="home.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController/register">
+      <resultDependencyConstraint result="index.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" name="" supplier="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController" method="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController/register"/>
+    <packagedElement xsi:type="frameweb:ControllerPackage" name="br.ufes.informatica.doeLivros.book.controller">
+      <packagedElement xsi:type="frameweb:FrontControllerClass" name="BookRegistrationController">
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="book" visibility="private" type="//@compose.0/br.ufes.informatica.doeLivros.book.domain/Book"/>
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="currentUser" visibility="private" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/User"/>
+        <ownedOperation xsi:type="frameweb:FrontControllerMethod" name="insertBook">
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:FrontControllerClass" name="BookSearchController">
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="bookList" visibility="private">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="book" visibility="private" type="//@compose.0/br.ufes.informatica.doeLivros.book.domain/Book"/>
+        <ownedOperation xsi:type="frameweb:FrontControllerMethod" name="getBookList">
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.2/Source //@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.2/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.2/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.2/Target"/>
+        <ownedEnd name="Source" type="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookRegistrationController" association="//@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.2"/>
+        <ownedEnd name="Target" type="//@compose.3/br.ufes.informatica.doeLivros.book.application/BookRegistrationService" association="//@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.2"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.3/Source //@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.3/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.3/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.3/Target"/>
+        <ownedEnd name="Source" type="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookSearchController" association="//@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.3"/>
+        <ownedEnd name="Target" type="//@compose.3/br.ufes.informatica.doeLivros.book.application/BookSearchService" association="//@compose.2/br.ufes.informatica.doeLivros.book.controller/@packagedElement.3"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ViewPackage" name="book/registration">
+      <packagedElement xsi:type="frameweb:UIComponent" name="formBookRegistration">
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.title" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.author" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.publicationYear" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputNumber"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.volume" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputNumber"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.edition" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputNumber"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.genre" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.editor" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.availabilityDate" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/datePicker"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="submit" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/commandButton"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:Page" name="index">
+        <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole" type="//@compose.2/book%2Fregistration/formBookRegistration" association="//@compose.2/book%2Fregistration/@packagedElement.3"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:Page" name="error"/>
+      <packagedElement xsi:type="frameweb:NavigationAssociation" memberEnd="//@compose.2/book%2Fregistration/@packagedElement.3/@ownedEnd.0 //@compose.2/book%2Fregistration/index/@ownedAttribute.0">
+        <ownedEnd xsi:type="frameweb:NavigationCompositionPart" type="//@compose.2/book%2Fregistration/index" association="//@compose.2/book%2Fregistration/@packagedElement.3"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" client="//@compose.2/book%2Fregistration/formBookRegistration" supplier="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookRegistrationController" method="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookRegistrationController/insertBook"/>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookRegistrationController" supplier="//@compose.2/book%2Fregistration/error" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookRegistrationController/insertBook">
+      <resultDependencyConstraint result="error.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ViewPackage" name="book/search">
+      <packagedElement xsi:type="frameweb:Page" name="index">
+        <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole" type="//@compose.2/book%2Fsearch/formBookSearch" association="//@compose.2/book%2Fsearch/@packagedElement.2"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:UIComponent" name="formBookSearch">
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.title" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.author" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.editor" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.publicationYear" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputNumber"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.genre" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.donator" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/inputText"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="book.availabilityDate" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/datePicker"/>
+        </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="submit" visibility="private">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/commandButton"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:NavigationAssociation" memberEnd="//@compose.2/book%2Fsearch/@packagedElement.2/@ownedEnd.0 //@compose.2/book%2Fsearch/index/@ownedAttribute.0">
+        <ownedEnd xsi:type="frameweb:NavigationCompositionPart" type="//@compose.2/book%2Fsearch/index" association="//@compose.2/book%2Fsearch/@packagedElement.2"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookRegistrationController" supplier="//@compose.2/book%2Fsearch/index" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController/register">
+      <resultDependencyConstraint result="index.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookSearchController" supplier="//@compose.2/book%2Fsearch/index" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookSearchController/getBookList">
+      <resultDependencyConstraint result="index.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" client="//@compose.2/book%2Fsearch/formBookSearch" supplier="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookSearchController" method="//@compose.2/br.ufes.informatica.doeLivros.book.controller/BookSearchController/getBookList"/>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" supplier="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController" method="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController/validate"/>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" name="" client="//@compose.2/core%2Fregister/formRegister" supplier="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController" method="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController/register"/>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" client="//@compose.2/core%2Flogin/formLogin" supplier="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController" method="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController/validate"/>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController" supplier="//@compose.2/core%2Flogin/index" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController/validate">
+      <resultDependencyConstraint result="index.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController" supplier="//@compose.2/core%2Fregister/index" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController/validate">
+      <resultDependencyConstraint result="index.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController" supplier="//@compose.2/core%2Fpages/home" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.core.controller/AuthenticateController/validate">
+      <resultDependencyConstraint result="home.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController" supplier="//@compose.2/core%2Fpages/home" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.core.controller/RegisterController/register">
+      <resultDependencyConstraint result="home.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ViewPackage" name="libraries/search">
+      <packagedElement xsi:type="frameweb:Page" name="index">
+        <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole" type="//@compose.2/libraries%2Fsearch/formPublicLibrariesSearch" association="//@compose.2/libraries%2Fsearch/@packagedElement.2"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:UIComponent" name="formPublicLibrariesSearch">
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="submit">
+          <type xsi:type="frameweb:Tag" href="frameweb/jbutler/NavigationModel_JButler_JSF_PrimeFaces.frameweb#//@configures.0/PrimeFaces/commandButton"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:NavigationAssociation" memberEnd="//@compose.2/libraries%2Fsearch/@packagedElement.2/@ownedEnd.0 //@compose.2/libraries%2Fsearch/index/@ownedAttribute.0">
+        <ownedEnd xsi:type="frameweb:NavigationCompositionPart" type="//@compose.2/libraries%2Fsearch/index" association="//@compose.2/libraries%2Fsearch/@packagedElement.2"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ControllerPackage" name="br.ufes.informatica.doeLivros.libraries.controller">
+      <packagedElement xsi:type="frameweb:FrontControllerClass" name="PublicLibrariesSearchController">
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="librariesList" visibility="private">
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedAttribute>
+        <ownedOperation xsi:type="frameweb:FrontControllerMethod" name="callSearchAPI">
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/br.ufes.informatica.doeLivros.libraries.controller/@packagedElement.1/Source //@compose.2/br.ufes.informatica.doeLivros.libraries.controller/@packagedElement.1/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/br.ufes.informatica.doeLivros.libraries.controller/@packagedElement.1/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/br.ufes.informatica.doeLivros.libraries.controller/@packagedElement.1/Target"/>
+        <ownedEnd name="Source" type="//@compose.2/br.ufes.informatica.doeLivros.libraries.controller/PublicLibrariesSearchController" association="//@compose.2/br.ufes.informatica.doeLivros.libraries.controller/@packagedElement.1"/>
+        <ownedEnd name="Target" type="//@compose.3/br.ufes.informatica.doeLivros.libraries.application/PublicLibrariesSearchService" association="//@compose.2/br.ufes.informatica.doeLivros.libraries.controller/@packagedElement.1"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/br.ufes.informatica.doeLivros.libraries.controller/PublicLibrariesSearchController" supplier="//@compose.2/libraries%2Fsearch/index" resultMethod="//@compose.2/br.ufes.informatica.doeLivros.libraries.controller/PublicLibrariesSearchController/callSearchAPI">
+      <resultDependencyConstraint result="index.xhtml"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" client="//@compose.2/libraries%2Fsearch/formPublicLibrariesSearch" supplier="//@compose.2/br.ufes.informatica.doeLivros.libraries.controller/PublicLibrariesSearchController" method="//@compose.2/br.ufes.informatica.doeLivros.libraries.controller/PublicLibrariesSearchController/callSearchAPI"/>
+  </compose>
+  <compose xsi:type="frameweb:ApplicationModel" name="Application Model">
+    <packagedElement xsi:type="frameweb:ApplicationPackage" name="br.ufes.informatica.doeLivros.core.application">
+      <packagedElement xsi:type="frameweb:ServiceInterface" name="AuthenticateService"/>
+      <packagedElement xsi:type="frameweb:ServiceInterface" name="RegisterService"/>
+      <packagedElement xsi:type="frameweb:ServiceClass" name="AuthenticateServiceBean">
+        <ownedOperation xsi:type="frameweb:ServiceMethod" name="authenticate">
+          <ownedParameter name="email">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          </ownedParameter>
+          <ownedParameter name="password">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceClass" name="RegisterServiceBean">
+        <ownedOperation xsi:type="frameweb:ServiceMethod" name="register">
+          <ownedParameter name="user" type="//@compose.0/br.ufes.informatica.doeLivros.core.domain/User"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOServiceAssociation" memberEnd="//@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.4/Source //@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.4/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.4/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.4/Target"/>
+        <ownedEnd name="Source" type="//@compose.3/br.ufes.informatica.doeLivros.core.application/AuthenticateServiceBean" association="//@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.4"/>
+        <ownedEnd name="Target" type="//@compose.1/br.ufes.informatica.doeLivros.core.persistence/UserDAO" association="//@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.4"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOServiceAssociation" memberEnd="//@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.5/Source //@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.5/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.5/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.5/Target"/>
+        <ownedEnd name="Source" type="//@compose.3/br.ufes.informatica.doeLivros.core.application/RegisterServiceBean" association="//@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.5"/>
+        <ownedEnd name="Target" type="//@compose.1/br.ufes.informatica.doeLivros.core.persistence/UserDAO" association="//@compose.3/br.ufes.informatica.doeLivros.core.application/@packagedElement.5"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceRealization" client="//@compose.3/br.ufes.informatica.doeLivros.core.application/AuthenticateServiceBean" supplier="//@compose.3/br.ufes.informatica.doeLivros.core.application/AuthenticateService"/>
+      <packagedElement xsi:type="frameweb:ServiceRealization" client="//@compose.3/br.ufes.informatica.doeLivros.core.application/RegisterServiceBean" supplier="//@compose.3/br.ufes.informatica.doeLivros.core.application/RegisterService"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ApplicationPackage" name="br.ufes.informatica.doeLivros.book.application">
+      <packagedElement xsi:type="frameweb:ServiceInterface" name="BookRegistrationService"/>
+      <packagedElement xsi:type="frameweb:ServiceInterface" name="BookSearchService"/>
+      <packagedElement xsi:type="frameweb:ServiceClass" name="BookRegistrationServiceBean">
+        <ownedOperation xsi:type="frameweb:ServiceMethod" name="insertBook"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceClass" name="BookSearchServiceBean">
+        <ownedOperation xsi:type="frameweb:ServiceMethod" name="getBookList"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceRealization" client="//@compose.3/br.ufes.informatica.doeLivros.book.application/BookRegistrationServiceBean" supplier="//@compose.3/br.ufes.informatica.doeLivros.book.application/BookRegistrationService"/>
+      <packagedElement xsi:type="frameweb:ServiceRealization" client="//@compose.3/br.ufes.informatica.doeLivros.book.application/BookSearchServiceBean" supplier="//@compose.3/br.ufes.informatica.doeLivros.book.application/BookSearchService"/>
+      <packagedElement xsi:type="frameweb:DAOServiceAssociation" memberEnd="//@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.6/Source //@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.6/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.6/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.6/Target"/>
+        <ownedEnd name="Source" type="//@compose.3/br.ufes.informatica.doeLivros.book.application/BookRegistrationServiceBean" association="//@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.6"/>
+        <ownedEnd name="Target" type="//@compose.1/br.ufes.informatica.doeLivros.book.persistence/BookDAO" association="//@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.6"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOServiceAssociation" memberEnd="//@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.7/Source //@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.7/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.7/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.7/Target"/>
+        <ownedEnd name="Source" type="//@compose.3/br.ufes.informatica.doeLivros.book.application/BookSearchServiceBean" association="//@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.7"/>
+        <ownedEnd name="Target" type="//@compose.1/br.ufes.informatica.doeLivros.book.persistence/BookDAO" association="//@compose.3/br.ufes.informatica.doeLivros.book.application/@packagedElement.7"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ApplicationPackage" name="br.ufes.informatica.doeLivros.libraries.application">
+      <packagedElement xsi:type="frameweb:ServiceInterface" name="PublicLibrariesSearchService"/>
+      <packagedElement xsi:type="frameweb:ServiceClass" name="PublicLibrariesSearchServiceBean"/>
+      <packagedElement xsi:type="frameweb:ServiceRealization" client="//@compose.3/br.ufes.informatica.doeLivros.libraries.application/PublicLibrariesSearchServiceBean" supplier="//@compose.3/br.ufes.informatica.doeLivros.libraries.application/PublicLibrariesSearchService"/>
+    </packagedElement>
+  </compose>
+</frameweb:FramewebProject>
