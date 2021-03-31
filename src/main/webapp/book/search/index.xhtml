@@ -17,15 +17,16 @@
     </ui:define>
 
     <ui:define name="body">
-		<adm:breadcrumb link="/core/registration/index" title="#{msgsCore['bookSearch.title']}" /><h:form id="formBookSearch">
+		<adm:breadcrumb link="/core/registration/index" title="#{msgsCore['bookSearch.title']}" />
+		<p:dataTable id="bookList" value="#{bookSearchController.bookList}" /><h:form id="formBookSearch">
 		
-			<p:inputText id="book.title" value="#{bookSearchController.book.title}" />
-			<p:inputText id="book.author" value="#{bookSearchController.book.author}" />
-			<p:inputText id="book.editor" value="#{bookSearchController.book.editor}" />
-			<p:inputNumber id="book.publicationYear" value="#{bookSearchController.book.publicationYear}" />
-			<p:inputText id="book.genre" value="#{bookSearchController.book.genre}" />
-			<p:inputText id="book.donator" value="#{bookSearchController.book.donator}" />
-			<p:datePicker id="book.availabilityDate" value="#{bookSearchController.book.availabilityDate}" />
+			<p:inputText id="title" value="#{bookSearchController.title}" />
+			<p:inputText id="author" value="#{bookSearchController.author}" />
+			<p:inputText id="editor" value="#{bookSearchController.editor}" />
+			<p:inputNumber id="publicationYear" value="#{bookSearchController.publicationYear}" />
+			<p:inputText id="genre" value="#{bookSearchController.genre}" />
+			<p:inputText id="donorName" value="#{bookSearchController.donorName}" />
+			<p:datePicker id="availabilityDate" value="#{bookSearchController.availabilityDate}" />
 			<p:commandButton value="submit" action="#{bookSearchController.}" />
 			
 		</h:form>

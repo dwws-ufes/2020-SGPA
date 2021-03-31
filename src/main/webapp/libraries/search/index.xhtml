@@ -17,7 +17,8 @@
     </ui:define>
 
     <ui:define name="body">
-		<adm:breadcrumb link="/core/registration/index" title="#{msgsCore['publicLibrariesSearch.title']}" /><h:form id="formPublicLibrariesSearch">
+		<adm:breadcrumb link="/core/registration/index" title="#{msgsCore['publicLibrariesSearch.title']}" />
+		<p:dataTable id="librariesList" value="#{publicLibrariesSearchController.librariesList}" /><h:form id="formPublicLibrariesSearch">
 		
 			<p:commandButton value="submit" action="#{publicLibrariesSearchController.}" />
 			
