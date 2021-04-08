@@ -17,18 +17,56 @@
     </ui:define>
 
     <ui:define name="body">
-		<adm:breadcrumb link="/core/registration/index" title="#{msgsCore['bookSearch.title']}" />
-		<p:dataTable id="bookList" value="#{bookSearchController.bookList}" /><h:form id="formBookSearch">
+		<adm:breadcrumb link="/book/search/index" title="#{msgsCore['bookSearch.title']}" />
+		<h:form id="formBookSearch">
 		
-			<p:inputText id="title" value="#{bookSearchController.title}" />
-			<p:inputText id="author" value="#{bookSearchController.author}" />
-			<p:inputText id="editor" value="#{bookSearchController.editor}" />
-			<p:inputNumber id="publicationYear" value="#{bookSearchController.publicationYear}" />
-			<p:inputText id="genre" value="#{bookSearchController.genre}" />
-			<p:inputText id="donorName" value="#{bookSearchController.donorName}" />
-			<p:datePicker id="availabilityDate" value="#{bookSearchController.availabilityDate}" />
-			<p:commandButton value="submit" action="#{bookSearchController.}" />
+			<h:outputText value="#{msgsCore['bookSearch.field.title']}" />: <p:inputText id="title" value="#{bookSearchController.title}" /><p></p>
+			<h:outputText value="#{msgsCore['bookSearch.field.author']}" />: <p:inputText id="author" value="#{bookSearchController.author}" /><p></p>
+			<h:outputText value="#{msgsCore['bookSearch.field.editor']}" />: <p:inputText id="editor" value="#{bookSearchController.editor}" /><p></p>
+			<h:outputText value="#{msgsCore['bookSearch.field.publicationYear']}" />: <p:inputNumber id="publicationYear" value="#{bookSearchController.publicationYear}" /><p></p>
+			<h:outputText value="#{msgsCore['bookSearch.field.genre']}" />: <p:inputText id="genre" value="#{bookSearchController.genre}" /><p></p>
+			<h:outputText value="#{msgsCore['bookSearch.field.donorName']}" />: <p:inputText id="donorName" value="#{bookSearchController.donorName}" /><p></p>
+			<h:outputText value="#{msgsCore['bookSearch.field.availabilityDate']}" />: <p:datePicker id="availabilityDate" value="#{bookSearchController.availabilityDate}" /><p></p>
+			<p:commandButton value="submit" action="#{bookSearchController.getBookListPage}" /><p></p>
 			
+		
+		<p:dataTable id="entitiesDataTable" var="entity"
+				value="#{bookSearchController.bookList}"
+			paginator="true"
+			lazy="true" paginatorPosition="bottom"
+			emptyMessage="#{msgsCore['bookSearch.text.noEntities']}">
+			<f:facet name="header">
+					<h:outputText value="#{msgsCore['bookSearch.text.entities']}" />
+				</f:facet>
+				<p:column headerText="#{msgsCore['bookSearch.field.title']}">
+					<h:outputText value="#{entity.title}" />
+				</p:column>
+				<p:column headerText="#{msgsCore['bookSearch.field.author']}">
+					<h:outputText value="#{entity.author}" />
+				</p:column>
+				<p:column headerText="#{msgsCore['bookSearch.field.genre']}">
+					<h:outputText value="#{entity.genre}" />
+				</p:column>
+				<p:column headerText="#{msgsCore['bookSearch.field.publicationYear']}">
+					<h:outputText value="#{entity.publicationYear}" />
+				</p:column>
+				<p:column headerText="#{msgsCore['bookSearch.field.edition']}">
+					<h:outputText value="#{entity.edition}" />
+				</p:column>
+				<p:column headerText="#{msgsCore['bookSearch.field.volume']}">
+					<h:outputText value="#{entity.volume}" />
+				</p:column>
+				<p:column headerText="#{msgsCore['bookSearch.field.editor']}">
+					<h:outputText value="#{entity.editor}" />
+				</p:column>
+				<p:column
+					headerText="#{msgsCore['bookSearch.field.availabilityDate']}">
+					<h:outputText value="#{entity.availabilityDate}">
+						<f:convertDateTime type="date"
+							pattern="#{msgs['jbutler.format.date.java']}" />
+					</h:outputText>
+				</p:column>
+		</p:dataTable>
 		</h:form>
     
     </ui:define>

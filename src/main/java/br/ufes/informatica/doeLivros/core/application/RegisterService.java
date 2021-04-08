@@ -1,4 +1,3 @@
-
 package br.ufes.informatica.doeLivros.core.application;
 
 import java.io.Serializable;

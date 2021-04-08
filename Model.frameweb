@@ -228,6 +228,30 @@
         <ownedOperation xsi:type="frameweb:DAOMethod" name="getBookList">
           <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
         </ownedOperation>
+        <ownedOperation xsi:type="frameweb:DAOMethod" name="getBookListWithParams">
+          <ownedParameter name="author">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          </ownedParameter>
+          <ownedParameter name="donorName">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          </ownedParameter>
+          <ownedParameter name="genre">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          </ownedParameter>
+          <ownedParameter name="title">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          </ownedParameter>
+          <ownedParameter name="availabilityDate">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Date"/>
+          </ownedParameter>
+          <ownedParameter name="editor">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          </ownedParameter>
+          <ownedParameter name="publicationYear">
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Integer"/>
+          </ownedParameter>
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xsi:type="frameweb:DAOInterface" name="BookDAO"/>
       <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/br.ufes.informatica.doeLivros.book.persistence/BookDAOJPA" supplier="//@compose.1/br.ufes.informatica.doeLivros.book.persistence/BookDAO"/>
@@ -365,7 +389,7 @@
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
         </ownedAttribute>
         <ownedAttribute xsi:type="frameweb:IOParameter" name="publicationYear" visibility="private">
-          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Integer"/>
         </ownedAttribute>
         <ownedAttribute xsi:type="frameweb:IOParameter" name="genre" visibility="private">
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
@@ -589,7 +613,7 @@
             <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
           </ownedParameter>
           <ownedParameter name="publicationYear">
-            <type xsi:type="uml:PrimitiveType" href="frameweb/Java.frameweb#//@compose.0/int"/>
+            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Integer"/>
           </ownedParameter>
           <ownedParameter name="genre">
             <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
