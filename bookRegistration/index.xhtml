@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:adm="http://github.com/adminfaces"
+    template="/WEB-INF/templates/template.xhtml">
+    
+    <ui:define name="body">
+		<adm:breadcrumb link="/book/bookRegistration/index" title="#{msgsBook['bookRegistration.title']}" />    
+	    <h:form id="listingForm">
+	    	<p:dataTable id="entitiesDataTable" var="entity" value="#{bookRegistrationController.lazyEntities}"
+				selection="#{bookRegistrationController.selectedEntity}" selectionMode="single" paginator="true"
+				rows="#{bookRegistrationController.maxDataTableRowsPerPage}"
+				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="#{bookRegistrationController.halfMaxDataTableRowsPerPage},#{bookRegistrationController.maxDataTableRowsPerPage},#{bookRegistrationController.doubleMaxDataTableRowsPerPage}"
+				lazy="true" paginatorPosition="bottom" emptyMessage="#{msgsBook['bookRegistration.text.noEntities']}">
+				<p:ajax event="rowSelect" update="buttonsGroup" />
+				<p:ajax event="rowUnselect" update="buttonsGroup" />
+				
+				<f:facet name="header">
+					<h:outputText value="#{msgsBook['bookRegistration.text.entities']}" />
+				</f:facet>
+				
+				<p:column headerText="#{msgsBook['bookRegistration.field.title']}">
+					<h:outputText value="#{entity.title}" />
+				</p:column>
+				
+				<p:column headerText="#{msgsBook['bookRegistration.field.author']}">
+					<h:outputText value="#{entity.author}" />
+				</p:column>
+				
+				<p:column headerText="#{msgsBook['bookRegistration.field.availabilityDate']}">
+					<h:outputText value="#{entity.availabilityDate}" >
+						<f:convertDateTime type="date" pattern="#{msgs['jbutler.format.date.java']}" />
+					</h:outputText>
+				</p:column>
+				
+				<f:facet name="footer">
+					<h:panelGroup id="buttonsGroup">
+						<p:commandButton action="#{bookRegistrationController.create}" icon="fa fa-plus" value="#{msgs['jbutler.crud.button.create']}" />
+						<p:commandButton action="#{bookRegistrationController.retrieve}" icon="fa fa-search" value="#{msgs['jbutler.crud.button.retrieve']}"
+							disabled="#{bookRegistrationController.selectedEntity == null}" />
+						<p:commandButton action="#{bookRegistrationController.update}" icon="fa fa-edit" value="#{msgs['jbutler.crud.button.update']}"
+							disabled="#{bookRegistrationController.selectedEntity == null}" />
+						<p:commandButton action="#{bookRegistrationController.trash}" icon="fa fa-trash" value="#{msgs['jbutler.crud.button.delete']}"
+						disabled="#{bookRegistrationController.selectedEntity == null}" update=":listingForm:trashGroup" />
+					</h:panelGroup>
+				</f:facet>
+			</p:dataTable>
+	    	
+	    	<h:panelGroup id="trashGroup">
+	    		<hr />
+				<p:panel id="trashPanel" header="#{msgs['jbutler.crud.text.trashHeader']}" toggleable="true" toggleSpeed="500"
+					rendered="#{not empty bookRegistrationController.trashCan}">
+					
+					<p:dataTable id="trashDataTable" var="entity" value="#{bookRegistrationController.trashCan}">
+						<p:column headerText="#{msgsBook['bookRegistration.field.title']}">
+							<h:outputText value="#{entity.title}" />
+						</p:column>
+						<p:column headerText="#{msgsBook['bookRegistration.field.author']}">
+							<h:outputText value="#{entity.author}" />
+						</p:column>
+						<p:column headerText="#{msgsBook['bookRegistration.field.availabilityDate']}">
+							<h:outputText value="#{entity.availabilityDate}" >
+								<f:convertDateTime type="date" pattern="#{msgs['jbutler.format.date.java']}" />
+							</h:outputText>
+						</p:column>
+						<f:facet name="footer">
+							<p:commandButton action="#{bookRegistrationController.cancelDeletion}" value="#{msgs['jbutler.crud.button.cancelDeletion']}"
+								icon="fa fa-fw fa-close" process="@this" update=":listingForm" />
+							<p:commandButton action="#{bookRegistrationController.delete}" value="#{msgs['jbutler.crud.button.confirmDeletion']}"
+								icon="fa fa-fw fa-trash-o" process="@this" update=":listingForm" />
+						</f:facet>
+					</p:dataTable>
+					
+				</p:panel>
+	    	</h:panelGroup>
+	    </h:form>
+	</ui:define>
+ </ui:composition>
