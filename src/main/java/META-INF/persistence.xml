@@ -6,7 +6,7 @@
 	<persistence-unit name="doelivros">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:jboss/datasources/doeLivros</jta-data-source>
-		<class>br.ufes.inf.nemo.jbutler.ejb.persistence.PersistentObjectSupport</class>
+		<class>br.ufes.inf.nemo.jbutler.ejb.persistence.PersistentObjectSupport </class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 		</properties>

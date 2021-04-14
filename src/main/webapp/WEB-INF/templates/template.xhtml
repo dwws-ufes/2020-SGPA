@@ -2,7 +2,10 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui" template="/admin.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/admin.xhtml"
+                xmlns:f="http://java.sun.com/jsf/core">
+	
+
 
 	<ui:define name="head">
 		<title>doeLivros!</title>
@@ -17,20 +20,43 @@
     </ui:define>
 	
 	<ui:define name="menu">
+	<p><h:outputText value="#{msgs['menu.welcome']}, #{(authenticateController.user != null) ? authenticateController.user.firstName : ''}" style="color: white" /> </p>
 		<ul class="sidebar-menu">
 			<li><p:link outcome="/index" onclick="clearBreadCrumbs()">
 					<i class="fa fa-home"></i>
 					<span><h:outputText value="#{msgs['menu.home']}" /></span>
 				</p:link></li>
+			<!--  	
+			<li class="header"><h:outputText
+					value="#{msgsCore['core.menu.nonLogged']}" /></li>
+			<li><p:link outcome="/core/login/index"
+				onclick="clearBreadCrumbs()">
+				<i class="fa fa-calendar"></i>
+				<span><h:outputText
+						value="#{msgsCore['core.menu.login']}" /></span>
+			</p:link></li>  
+			<li><p:link outcome="/core/register/index"
+				onclick="clearBreadCrumbs()">
+				<i class="fa fa-calendar"></i>
+				<span><h:outputText
+						value="#{msgsCore['core.menu.registration']}" /></span>
+			</p:link></li>
+			-->						
 			<li class="header"><h:outputText
 					value="#{msgsCore['core.menu.admin']}" /></li>
-			<li><p:link outcome="/book/search/index"
+			<li><p:link outcome="/book/search/index" 
 					onclick="clearBreadCrumbs()">
 					<i class="fa fa-calendar"></i>
 					<span><h:outputText
 							value="#{msgsCore['core.menu.bookSearch']}" /></span>
 				</p:link></li>
-		</ul>
+			<li><p:link outcome="/book/bookRegistration/index" 
+				onclick="clearBreadCrumbs()">
+				<i class="fa fa-calendar"></i>
+				<span><h:outputText
+						value="#{msgsCore['core.menu.bookRegistration']}" /></span>
+			</p:link></li>
+	</ul>
 	</ui:define>
 	 
 

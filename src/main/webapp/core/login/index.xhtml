@@ -23,19 +23,21 @@
 			<p:focus />
 
 			<div class="form-group has-feedback">
-				<p:inputText value="#{sessionController.email}" type="email" styleClass="form-control" placeholder="#{msgsCore['login.field.email.placeholder']}" required="true" requiredMessage="#{msgsCore['login.field.email.requiredMessage']}" />
+				<p:inputText value="#{authenticateController.email}" type="email" styleClass="form-control" placeholder="#{msgsCore['login.field.email.placeholder']}" required="true" requiredMessage="#{msgsCore['login.field.email.requiredMessage']}" />
 				<i class="fa fa-envelope form-control-feedback" ></i>
 			</div>
 			<div class="form-group has-feedback">
-				<p:inputText value="#{sessionController.password}" type="password" styleClass="form-control" placeholder="#{msgsCore['login.field.password.placeholder']}" required="true" requiredMessage="#{msgsCore['login.field.password.requiredMessage']}" />
+				<p:inputText value="#{authenticateController.password}" type="password" styleClass="form-control" placeholder="#{msgsCore['login.field.password.placeholder']}" required="true" requiredMessage="#{msgsCore['login.field.password.requiredMessage']}" />
 				<i class="fa fa-lock form-control-feedback" style="font-size: 18px"></i>
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<p:commandButton id="loginButton" styleClass="btn btn-success btn-block" value="#{msgsCore['login.button.login']}" action="#{sessionController.login}" update="@form" />
+					<p:commandButton id="loginButton" styleClass="btn btn-success btn-block" value="#{msgsCore['login.button.login']}" action="#{authenticateController.validate}" update="@form" />
 				</div>
 			</div>
 		</h:form>
+		<br></br>
+		<h:outputLink value = "/doeLivros/core/register/index.xhtml" >Cadastre-se</h:outputLink> 
 
 	</ui:define>
 </ui:composition>

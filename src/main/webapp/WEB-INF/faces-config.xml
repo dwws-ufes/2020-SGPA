@@ -7,17 +7,23 @@
 	<application>
 		<!-- Defines the resource bundle that contains the standard JSF messages 
 			(overriding the ones provided). -->
-		<message-bundle>br.ufes.informatica.oldenburg.faces</message-bundle>
+		<message-bundle>br.ufes.informatica.doeLivros.faces</message-bundle>
 
 		<!-- Loads resource bundles for i18n messages and assigns names to them. -->
+		
 		<resource-bundle>
-			<base-name>br.ufes.informatica.oldenburg.messages</base-name>
+			<base-name>br.ufes.informatica.doeLivros.messages</base-name>
 			<var>msgs</var>
 		</resource-bundle>
-
+		
 		<resource-bundle>
-			<base-name>br.ufes.informatica.oldenburg.core.view.messages</base-name>
+			<base-name>br.ufes.informatica.doeLivros.core.view.messages</base-name>
 			<var>msgsCore</var>
+		</resource-bundle>
+		
+		<resource-bundle>
+			<base-name>br.ufes.informatica.doeLivros.book.view.messages</base-name>
+			<var>msgsBook</var>
 		</resource-bundle>
 
 		<!-- Defines the default locale. -->
