@@ -7,6 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import br.ufes.inf.nemo.jbutler.ejb.controller.JSFController;
 import br.ufes.informatica.doeLivros.core.application.AuthenticateService;
@@ -41,10 +42,24 @@ public class AuthenticateController extends JSFController {
 		if (user==null) {
 		    FacesContext.getCurrentInstance().addMessage(null,
 			new FacesMessage(FacesMessage.SEVERITY_ERROR, "Teste retorno", ""));
-		return null;
+		    return null;
 		}
-		else
-		return "/index.xhtml?faces-redirect=true";
+		else {
+					
+					/* -- Inicio
+					 * Trecho de codigo para colocar o usuario na sessao, 
+					 * que posteriormente utilizaremos na controller de bookRegistration
+					 * */
+					FacesContext facesContext = FacesContext.getCurrentInstance();
+					HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+					session.setAttribute("user", this.user);
+					/* -- Fim 
+					 * Trecho de codigo para colocar o usuario na sessao, 
+					 * que posteriormente utilizaremos na controller de bookRegistration
+					 * */
+					
+					return "/index.xhtml?faces-redirect=true";
+				}
 	}
 		
 

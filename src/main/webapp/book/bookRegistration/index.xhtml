@@ -10,7 +10,7 @@
     <ui:define name="body">
 		<adm:breadcrumb link="/book/bookRegistration/index" title="#{msgsBook['bookRegistration.title']}" />    
 	    <h:form id="listingForm">
-	    	<p:dataTable id="entitiesDataTable" var="entity" value="#{bookRegistrationController.lazyEntities}"
+	    	<p:dataTable id="entitiesDataTable" var="entity" value="#{bookRegistrationController.lazyListOfBooks}"
 				selection="#{bookRegistrationController.selectedEntity}" selectionMode="single" paginator="true"
 				rows="#{bookRegistrationController.maxDataTableRowsPerPage}"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"

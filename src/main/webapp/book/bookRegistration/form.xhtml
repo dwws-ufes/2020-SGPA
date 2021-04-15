@@ -12,27 +12,28 @@
 		<h:form id="entitiesForm">
 			<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">
 				<p:outputLabel for="titleField" value="#{msgsBook['bookRegistration.field.title']}" />
-				<p:inputText id="titleField" value="#{bookRegistrationController.selectedEntity.title}" style="width: 100%;" />
+				<p:inputText id="titleField" value="#{bookRegistrationController.selectedEntity.title}" style="width: 100%;" required="true"/>
 				
 				<p:outputLabel for="authorField" value="#{msgsBook['bookRegistration.field.author']} " />
-				<p:inputText id="authorField" value="#{bookRegistrationController.selectedEntity.author}" style="width: 100%;" />
+				<p:inputText id="authorField" value="#{bookRegistrationController.selectedEntity.author}" style="width: 100%;" required="true"/>
 				
 				<p:outputLabel for="editorField" value="#{msgsBook['bookRegistration.field.editor']}" />
-				<p:inputText id="editorField" value="#{bookRegistrationController.selectedEntity.editor}" style="width: 100%;" />
+				<p:inputText id="editorField" value="#{bookRegistrationController.selectedEntity.editor}" style="width: 100%;" required="true"/>
 								
 				<p:outputLabel for="publicationYearField" value="#{msgsBook['bookRegistration.field.publicationYear']}" />
 				<p:inputText id="publicationYearField" value="#{bookRegistrationController.selectedEntity.publicationYear}"
 					type = 'number' style="width: 50%;" />
 								
 				<p:outputLabel for="volumeField" value="#{msgsBook['bookRegistration.field.volume']}" />
-				<p:inputText id="volumeField" value="#{bookRegistrationController.selectedEntity.volume}" style="width: 50%;" />
+				<p:inputText id="volumeField" value="#{bookRegistrationController.selectedEntity.volume}" 
+					type = 'number' style="width: 50%;" />
 				
 				<p:outputLabel for="genreField" value="#{msgsBook['bookRegistration.field.genre']}" />
 				<p:inputText id="genreField" value="#{bookRegistrationController.selectedEntity.genre}" style="width: 50%;" />
 				
 				<p:outputLabel for="availabilityDateField" value="#{msgsBook['bookRegistration.field.availabilityDate']}" />
 				<p:calendar id="availabilityDateField" value="#{bookRegistrationController.selectedEntity.availabilityDate}" 
-					showOn="button" pattern="dd/MM/yyyy" mask="true" style="width: 100%;" />	
+					showOn="button" pattern="dd/MM/yyyy" mask="true" style="width: 100%;" required="true"/>	
 								
 			</p:panelGrid>
 			<p:commandButton id="saveButton" value="#{msgs['jbutler.crud.button.save']}" icon="fa fa-save" 

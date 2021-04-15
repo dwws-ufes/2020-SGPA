@@ -143,5 +143,31 @@ public class BookDAOJPA extends BaseJPADAO<Book> implements BookDAO {
 
 		return results;
 	}
+	
+	@Override
+	public List<Book> getBookListByDonor(Person donatedBy) {
+		
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Book> cq = cb.createQuery(Book.class);
+		Root<Book> root = cq.from(Book.class);
+		
+		cq.select(root);
+		Predicate[] predicates = new Predicate[1];
+		
+		Join<Book, Person> joinBookPerson = root.join("donatedBy");
+		predicates[0] = cb.equal(joinBookPerson.get("id"), donatedBy.getId()); 
+		
+		//cq.where(cb.equal(root.get("donatedBy"), donatedBy));//   root.get("donatedBy").in(donatedBy));
+				
+		cq.select(root).where(predicates);
+		cq.orderBy(cb.asc(root.get("title")));
+		
+		Query query = entityManager.createQuery(cq); 
+		
+		@SuppressWarnings("unchecked")
+		List<Book> bookList = query.getResultList();
+		
+		return bookList;
+	}
 
 }
