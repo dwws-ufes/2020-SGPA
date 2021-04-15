@@ -22,89 +22,61 @@
 
 		<ui:decorate template="/WEB-INF/templates/form.xhtml">
 			<ui:param name="formName" value="form" />
-			<ui:param name="formLabel" value="Formulário de Cadastro" />
+			<ui:param name="formLabel" value="#{msgsCore['signupForm.title']}" />
 			<p:focus />
 
 			<p:messages id="msgs" />
 
 			<h:panelGrid columns="3" cellpadding="7" styleClass="p-mb-3">
 
-				<p:outputLabel for="firstname" value="Nome:" />
+				<p:outputLabel for="firstname" value="#{msgsCore['signupForm.user.firstName']}" />
 				<p:inputText id="firstname"
 					value="#{registerController.user.firstName}" required="true">
 					<f:validateLength minimum="2" />
 				</p:inputText>
 				<p:message for="firstname" display="icon" />
 
-				<p:outputLabel for="lastname" value="Sobrenome:" />
+				<p:outputLabel for="lastname" value="#{msgsCore['signupForm.user.lastName']}" />
 				<p:inputText id="lastname"
 					value="#{registerController.user.lastName}" required="true">
 					<f:validateLength minimum="2" />
-					<p:ajax update="msgLastname" event="keyup" />
+					<p:ajax update="msgLastname" event="blur" />
 				</p:inputText>
 				<p:message for="lastname" id="msgLastname" display="icon" />
 
-				<p:outputLabel for="birthDate" value="Nascimento:" />
+				<p:outputLabel for="birthDate" value="#{msgsCore['signupForm.user.birthDate']}" />
 				<p:calendar id="birthDate"
 					value="#{registerController.user.birthDate}" pattern="dd-MM-yyyy"
 					mask="true" required="true" />
 				<p:message for="birthDate" id="msgbirthDate" display="icon" />
-
-				<p:outputLabel for="country" value="Pais:" />
-				<p:inputText id="country"
-					value="#{registerController.user.target.country}" label="País">
-					<p:ajax update="msgLast" event="keyup" />
-				</p:inputText>
-				<p:message for="country" id="msgLast" display="icon" />
-
-				<p:outputLabel for="province" value="Estado:" />
-				<p:inputText id="province"
-					value="#{registerController.user.target.province}" label="Estado">
-					<p:ajax update="msgprovince" event="keyup" />
-				</p:inputText>
-				<p:message for="province" id="msgprovince" display="icon" />
-
-				<p:outputLabel for="city" value="Cidade:" />
-				<p:inputText id="city"
-					value="#{registerController.user.target.city}" label="city">
-					<p:ajax update="msgcity" event="keyup" />
-				</p:inputText>
-				<p:message for="city" id="msgcity" display="icon" />
-
-				<p:outputLabel for="zipCode" value="CEP:" />
-				<p:inputText id="zipCode"
-					value="#{registerController.user.target.zipCode}" label="zipCode">
-					<p:ajax update="msgzipCode" event="keyup" />
-				</p:inputText>
-				<p:message for="zipCode" id="msgzipCode" display="icon" />
-
-				<p:outputLabel for="nickname" value="Nome de usuário:" />
+				
+				<p:outputLabel for="nickname" value="#{msgsCore['signupForm.user.nickname']}" />
 				<p:inputText id="nickname"
 					value="#{registerController.user.nickname}">
-					<p:ajax update="msgnickname" event="keyup" />
+					<p:ajax update="msgnickname" event="blur" />
 				</p:inputText>
 				<p:message for="nickname" id="msgnickname" display="icon" />
 
-				<p:outputLabel for="email" value="Email:" />
+				<p:outputLabel for="email" value="#{msgsCore['signupForm.user.email']}" />
 				<p:inputText id="email" value="#{registerController.user.email}"
 					label="email" required="true">
-					<p:ajax update="msgemail" event="keyup" />
+					<p:ajax update="msgemail" event="blur" />
 				</p:inputText>
 				<p:message for="email" id="msgemail" display="icon" />
 
-				<p:outputLabel for="password" value="Senha:" />
+				<p:outputLabel for="password" value="#{msgsCore['signupForm.user.password']}" />
 				<p:password id="password"
 					value="#{registerController.user.password}" label="password"
 					required="true">
-					<p:ajax update="msgpassword" event="keyup" />
+					<p:ajax update="msgpassword" event="blur" />
 				</p:password>
 				<p:message for="password" id="msgpassword" display="icon" />
 
-				<p:outputLabel for="confirmpassword" value="Confirmar Senha:" />
+				<p:outputLabel for="confirmpassword" value="#{msgsCore['signupForm.confirmPassword']}" />
 				<p:password id="confirmpassword"
 					value="#{registerController.confirmPassword}"
 					label="confirmPassword" required="true">
-					<p:ajax update="msgconfirmpassword" event="keyup" />
+					<p:ajax update="msgconfirmpassword" event="blur" />
 				</p:password>
 				<p:message for="confirmpassword" id="msgconfirmpassword"
 					display="icon" />
@@ -114,12 +86,16 @@
 
 			</h:panelGrid>
 			<br></br>
-			<p:commandButton value="Cadastrar"
+			<p:commandButton value="#{msgsCore['signupForm.confirmButton']}"
 				styleClass="btn btn-success btn-block" update="@form"
 				action="#{registerController.register}" icon="pi pi-check" />
+			<p:linkButton value="#{msgsCore['signupForm.cancelButton']}"
+				styleClass="btn btn-success btn-block"
+				outcome="/core/login/index.xhtml?faces-redirect=true" icon="pi pi-check" />
 
 
 		</ui:decorate>
+		
 
 
 	</ui:define>

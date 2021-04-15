@@ -88,4 +88,9 @@ public class Address extends PersistentObjectSupport implements Comparable<Addre
 		// FIXME: auto-generated method stub
 		return super.compareTo(o);
 	}
+	
+	@Override
+	public String toString() {
+		return this.city + "," + this.province + "," + this.country + ". " + this.zipCode;  
+	}
 }

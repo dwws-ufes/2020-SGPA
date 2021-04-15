@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:adm="http://github.com/adminfaces"
+    template="/WEB-INF/templates/template.xhtml">
+	
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{registerController.checkAddress}" />
+	</f:metadata>
+	
+    <ui:define name="title">
+        <h:outputText value="#{msgsCore['user.updateAddressPage.title']}" />
+    </ui:define>
+
+    <ui:define name="description">
+        <h:outputText value="#{msgsCore['user.updateAddressPage.description']}" />
+    </ui:define>
+
+    <ui:define name="body">
+    <adm:breadcrumb link="/core/register/updateAddress" title="#{msgsCore['user.updateAddressPage.title']}" />
+		<h:form id="formUpdAddress">
+			
+			<h:outputText value="#{msgsCore['user.updateAddressPage.allFieldsRequired']}" /> <p></p>
+			<h:outputText value="#{msgsCore['user.address.field.city']}" />*: 
+			<p:inputText id="city" value="#{authenticateController.user.target.city}" >
+			<p:ajax update="cmdButton" event="blur" />
+			</p:inputText><p></p>
+			<h:outputText value="#{msgsCore['user.address.field.province']}" />*: 
+			<p:inputText id="province" value="#{authenticateController.user.target.province}"  >
+			<p:ajax update="cmdButton" event="blur" />
+			</p:inputText><p></p>
+			<h:outputText value="#{msgsCore['user.address.field.country']}" />*: 
+			<p:inputText id="country" value="#{authenticateController.user.target.country}" >
+			<p:ajax update="cmdButton" event="blur" />
+			</p:inputText><p></p>
+			<h:outputText value="#{msgsCore['user.address.field.zipCode']}" />*: 
+			<p:inputText id="zipCode" value="#{authenticateController.user.target.zipCode}"  >
+			<p:ajax update="cmdButton" event="blur" />
+			</p:inputText><p></p>
+			
+			<p:commandButton id="cmdButton" value="#{msgsCore['user.updateAddressPage.updateButton']}" action="#{registerController.updateUser}" disabled="#{(param['formUpdAddress:city']=='') || (param['formUpdAddress:country']=='') || (param['formUpdAddress:province']=='') || (param['formUpdAddress:zipCode']=='')}" /><p></p>
+			<p:commandButton value="#{msgsCore['user.updateAddressPage.cancelButton']}" action="#{registerController.clearAddress}" />   <p></p>  
+		</h:form>
+		
+    
+    </ui:define>
+</ui:composition>

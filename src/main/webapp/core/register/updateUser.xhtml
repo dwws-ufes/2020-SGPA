@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:adm="http://github.com/adminfaces"
+    template="/WEB-INF/templates/template.xhtml">
+	
+
+    <ui:define name="title">
+        <h:outputText value="#{msgsCore['user.updatePage.name']}" />
+    </ui:define>
+
+    <ui:define name="description">
+        <h:outputText value="#{msgsCore['user.updatePage.description']}" />
+    </ui:define>
+
+    <ui:define name="body">
+		<adm:breadcrumb link="/core/register/updateUser" title="#{msgsCore['user.updatePage.name']}" />
+		<h:form id="formBookSearch">
+		
+			<h:outputText value="#{msgsCore['user.field.firstName']}" />: <p:inputText id="title" value="#{authenticateController.user.firstName}" /><p></p>
+			<h:outputText value="#{msgsCore['user.field.lastName']}" />: <p:inputText id="author" value="#{authenticateController.user.firstName}" /><p></p>
+			<h:outputText value="#{msgsCore['user.field.birthdate']}" />: <p:calendar id="editor" value="#{authenticateController.user.birthDate}" showOn="button" pattern="dd/MM/yyyy" mask="true"/><p></p>
+			<h:outputText value="#{msgsCore['user.field.nickname']}" />: <p:inputText id="nickname" value="#{authenticateController.user.nickname}" /><p></p>
+			<h:outputText value="#{msgsCore['user.field.email']}" />: <h:outputText value="#{authenticateController.user.email}" /><p></p>
+			<h:outputText value="#{msgsCore['user.field.address']}" />: <h:outputText value="${(authenticateController.user.target == null) ? msgsCore['user.field.noAddressRegistered'] : authenticateController.user.target }" /><p></p>
+			
+			
+			<p:linkButton value="#{msgsCore['user.action.editAddress']}" outcome="updateAddress.xhtml" />   <p></p>  
+
+			
+			<p:commandButton value="#{msgsCore['user.action.updateUser']}" action="#{registerController.updateUser}" /><p></p>
+			
+			
+		</h:form>
+			
+		
+    
+    </ui:define>
+</ui:composition>

@@ -60,5 +60,9 @@ public class UserDAOJPA extends BaseJPADAO<User> implements UserDAO {
 		// FIXME: auto-generated method stub
 		return null;
 	}
+	
+	public User merge(User user) {
+		return entityManager.merge(user);
+	}
 
 }

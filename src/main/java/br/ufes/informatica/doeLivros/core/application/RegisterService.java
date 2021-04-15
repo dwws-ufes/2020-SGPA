@@ -15,5 +15,7 @@ public interface RegisterService extends Serializable {
 	public void register(User user) throws EmailInUseException;
 	
 	public void checkAdminCreated();
+	
+	public User updateUser(User user);
 
 }
