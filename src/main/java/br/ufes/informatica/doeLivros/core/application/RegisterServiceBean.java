@@ -56,7 +56,6 @@ public class RegisterServiceBean implements RegisterService {
 		    	Set<Role> list = new HashSet<Role>();
 				list.add(role);
 				admin.setRolesList(list);
-				System.out.println("OLA");
 				userDAO.save(admin);
 //				addressDAO.save(target);
 		    } catch (MultiplePersistentObjectsFoundException e) {

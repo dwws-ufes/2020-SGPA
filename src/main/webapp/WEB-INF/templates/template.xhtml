@@ -3,9 +3,10 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" template="/admin.xhtml"
-                xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:o="http://omnifaces.org/ui">
 	
-
+	<o:importConstants type="br.ufes.informatica.doeLivros.core.domain.Role" />
 
 	<ui:define name="head">
 		<title>doeLivros!</title>
@@ -47,7 +48,7 @@
 			</p:link></li>  
 									
 			<li class="header"><h:outputText
-					value="#{msgsCore['core.menu.admin']}" /></li>
+					value="#{msgsCore['core.menu.bookArea']}" /></li>
 			<li><p:link outcome="/book/search/index" 
 					onclick="clearBreadCrumbs()">
 					<i class="fa fa-search"></i>
@@ -60,6 +61,19 @@
 				<span><h:outputText
 						value="#{msgsCore['core.menu.bookRegistration']}" /></span>
 			</p:link></li>
+			
+			<h:panelGroup rendered="#{(authenticateController.user.rolesList.iterator().next().name == 'Admin')}">
+			<li class="header"><h:outputText
+					value="#{msgsCore['core.menu.admin']}" /></li>
+			</h:panelGroup>
+			<li><p:link outcome="/book/bookRegistration/admin" rendered="#{(authenticateController.user.rolesList.iterator().next().name == 'Admin')}"
+					onclick="clearBreadCrumbs()">
+					<i class="fa fa-search"></i>
+					<span><h:outputText
+							value="#{msgsCore['core.menu.bookAdmin']}" /></span>
+				</p:link></li>
+			
+			
 	</ul>
 	</ui:define>
 	 

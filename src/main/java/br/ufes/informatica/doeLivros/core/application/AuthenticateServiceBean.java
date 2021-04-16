@@ -23,18 +23,16 @@ public class AuthenticateServiceBean implements AuthenticateService {
 	public User authenticate(String email, String password) {
 		try {
 			 User user = this.userDAO.getUserByEmail(email);
-			 if (password.compareTo(user.getPassword()) == 0)
+			 if (password.compareTo(user.getPassword()) == 0) {
 				 return user;
+			 }
 			 else
 				 return null;
 		} catch (PersistentObjectNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		} catch (MultiplePersistentObjectsFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return null;
 		}
-		return null;
 	}
 	
 

@@ -25,6 +25,7 @@
 			<base-name>br.ufes.informatica.doeLivros.book.view.messages</base-name>
 			<var>msgsBook</var>
 		</resource-bundle>
+		
 
 		<!-- Defines the default locale. -->
 		<locale-config>

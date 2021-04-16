@@ -43,7 +43,7 @@
 			</p:inputText><p></p>
 			
 			<p:commandButton id="cmdButton" value="#{msgsCore['user.updateAddressPage.updateButton']}" action="#{registerController.updateUser}" disabled="#{(param['formUpdAddress:city']=='') || (param['formUpdAddress:country']=='') || (param['formUpdAddress:province']=='') || (param['formUpdAddress:zipCode']=='')}" /><p></p>
-			<p:commandButton value="#{msgsCore['user.updateAddressPage.cancelButton']}" action="#{registerController.clearAddress}" />   <p></p>  
+			<p:commandButton value="#{msgsCore['user.updateAddressPage.cancelButton']}" action="#{registerController.cancelUpdateAddress}" />   <p></p>
 		</h:form>
 		
     

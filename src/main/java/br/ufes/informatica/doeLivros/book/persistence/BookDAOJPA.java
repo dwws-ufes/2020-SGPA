@@ -58,38 +58,38 @@ public class BookDAOJPA extends BaseJPADAO<Book> implements BookDAO {
 	@Override
 	public List<Book> getBookListWithParams(String author, String donorName, String genre, String title,
 			Date availabilityDate, String editor, Integer publicationYear) {
-		
-		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-//		Long donorId = null;
-		
-//		if (donorName!= null) {
-//			System.out.println("I AM HERE" + donorName);
-//			CriteriaQuery<Person> cqPerson = cb.createQuery(Person.class);
-//			Root<Person> rootPerson = cqPerson.from(Person.class);
-//			Predicate predicate = cb.like(cb.concat(rootPerson.get("firstName"), rootPerson.get("lastName")),String.format("%c%s%c",'%',donorName,'%'));
-////			Predicate predicate = cb.equal(rootPerson.get("nickname"), donorName);
-//			cqPerson.select(rootPerson).where(predicate);
-//			Query query = entityManager.createQuery(cqPerson); 
-//			try {
-//				Person person = (Person) query.getSingleResult();
-//				donorId = person.getId();
-////				System.out.println(person);
-//			} 
-//			catch (Exception e) {
-//				return null;
-//			}
-////			cqPerson.select(rootPerson).where(cb.equal(rootPerson.get("nickname"), donorName));
-////			Query query = entityManager.createQuery(cqPerson);
-////			Person person = (Person) query.getSingleResult();
-//			
-//		}
 
-//		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		//		Long donorId = null;
+
+		//		if (donorName!= null) {
+		//			System.out.println("I AM HERE" + donorName);
+		//			CriteriaQuery<Person> cqPerson = cb.createQuery(Person.class);
+		//			Root<Person> rootPerson = cqPerson.from(Person.class);
+		//			Predicate predicate = cb.like(cb.concat(rootPerson.get("firstName"), rootPerson.get("lastName")),String.format("%c%s%c",'%',donorName,'%'));
+		////			Predicate predicate = cb.equal(rootPerson.get("nickname"), donorName);
+		//			cqPerson.select(rootPerson).where(predicate);
+		//			Query query = entityManager.createQuery(cqPerson); 
+		//			try {
+		//				Person person = (Person) query.getSingleResult();
+		//				donorId = person.getId();
+		////				System.out.println(person);
+		//			} 
+		//			catch (Exception e) {
+		//				return null;
+		//			}
+		////			cqPerson.select(rootPerson).where(cb.equal(rootPerson.get("nickname"), donorName));
+		////			Query query = entityManager.createQuery(cqPerson);
+		////			Person person = (Person) query.getSingleResult();
+		//			
+		//		}
+
+		//		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Book> cq = cb.createQuery(Book.class);
-//		Metamodel m = entityManager.getMetamodel();
-//		EntityType<Book> book_ = m.entity(Book.class);
+		//		Metamodel m = entityManager.getMetamodel();
+		//		EntityType<Book> book_ = m.entity(Book.class);
 		Root<Book> root = cq.from(Book.class);
-				
+
 		int count = 0;
 		count = (author!=null) ? count+1 : count;
 		count = (donorName!=null) ? count+1 : count;
@@ -98,11 +98,11 @@ public class BookDAOJPA extends BaseJPADAO<Book> implements BookDAO {
 		count = (availabilityDate!=null) ? count+1 : count;
 		count = (editor!=null) ? count+1 : count;
 		count = (publicationYear!=null) ? count+1 : count;
-		
-//		System.out.println("Estou aqui");
+
+		//		System.out.println("Estou aqui");
 		Predicate[] predicates = new Predicate[count];
-//		DateFormat dF;
-		
+		//		DateFormat dF;
+
 		if (author != null) 
 			predicates[--count] = cb.equal(root.get("author"), author); 
 		if (donorName!=null) {
@@ -120,53 +120,58 @@ public class BookDAOJPA extends BaseJPADAO<Book> implements BookDAO {
 		if (publicationYear!=null)
 			predicates[--count] = cb.equal(root.get("publicationYear"), publicationYear); 
 
-		
-//		if (year != null) {
-////			DateFormat dF1 = new SimpleDateFormat("yyyy");
-//			predicates[--count] = cb.equal(root.get("year"), year); 
-//		}
-//		if (name != null) {
-//			predicates[--count] = cb.equal(root.get("name"), name); 
-//		}
-//		if (deadline != null) {
-////			DateFormat dF2 = new SimpleDateFormat("yyyy-mm-dd");
-//			predicates[--count] = cb.equal(root.get("submissionDeadline"), deadline);
-//		}
-		
+
+		//		if (year != null) {
+		////			DateFormat dF1 = new SimpleDateFormat("yyyy");
+		//			predicates[--count] = cb.equal(root.get("year"), year); 
+		//		}
+		//		if (name != null) {
+		//			predicates[--count] = cb.equal(root.get("name"), name); 
+		//		}
+		//		if (deadline != null) {
+		////			DateFormat dF2 = new SimpleDateFormat("yyyy-mm-dd");
+		//			predicates[--count] = cb.equal(root.get("submissionDeadline"), deadline);
+		//		}
+
 		cq.select(root).where(predicates);
 		Query query = entityManager.createQuery(cq); 
-		
+
 
 		@SuppressWarnings("unchecked")
 		List<Book> results = query.getResultList(); // Isso dá warning
-		
+
 
 		return results;
 	}
-	
+
 	@Override
 	public List<Book> getBookListByDonor(Person donatedBy) {
-		
+
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Book> cq = cb.createQuery(Book.class);
 		Root<Book> root = cq.from(Book.class);
-		
+
 		cq.select(root);
-		Predicate[] predicates = new Predicate[1];
-		
-		Join<Book, Person> joinBookPerson = root.join("donatedBy");
-		predicates[0] = cb.equal(joinBookPerson.get("id"), donatedBy.getId()); 
-		
-		//cq.where(cb.equal(root.get("donatedBy"), donatedBy));//   root.get("donatedBy").in(donatedBy));
-				
-		cq.select(root).where(predicates);
+		if (donatedBy != null) {
+			Predicate[] predicates = new Predicate[1];
+
+			Join<Book, Person> joinBookPerson = root.join("donatedBy");
+			predicates[0] = cb.equal(joinBookPerson.get("id"), donatedBy.getId()); 
+
+			//cq.where(cb.equal(root.get("donatedBy"), donatedBy));//   root.get("donatedBy").in(donatedBy));
+
+			cq.select(root).where(predicates);
+		}
+		else {
+			cq.select(root);
+		}
 		cq.orderBy(cb.asc(root.get("title")));
-		
+
 		Query query = entityManager.createQuery(cq); 
-		
+
 		@SuppressWarnings("unchecked")
 		List<Book> bookList = query.getResultList();
-		
+
 		return bookList;
 	}
 

@@ -28,10 +28,11 @@
 			<h:outputText value="#{msgsCore['user.field.address']}" />: <h:outputText value="${(authenticateController.user.target == null) ? msgsCore['user.field.noAddressRegistered'] : authenticateController.user.target }" /><p></p>
 			
 			
-			<p:linkButton value="#{msgsCore['user.action.editAddress']}" outcome="updateAddress.xhtml" />   <p></p>  
-
-			
+			<p:button value="#{msgsCore['user.action.editAddress']}" href="updateAddress.xhtml" />   <p></p>  
+			<p:button value="#{msgsCore['user.action.editPassword']}" href="updatePassword.xhtml" />   <p></p>  
 			<p:commandButton value="#{msgsCore['user.action.updateUser']}" action="#{registerController.updateUser}" /><p></p>
+			
+			<p:button href="../../index.xhtml" value="#{msgsCore['user.action.cancelButton']}" />   <p></p>  
 			
 			
 		</h:form>
