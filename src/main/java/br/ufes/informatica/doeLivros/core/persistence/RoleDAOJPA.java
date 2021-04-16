@@ -40,6 +40,7 @@ public class RoleDAOJPA extends BaseJPADAO<Role> implements RoleDAO {
 		return null;
 	}
 	
+	//Função que busca uma Role no banco de dados de acordo com o nome fornecido.
 	 @Override
 	 public Role retrieveByName(String name) throws PersistentObjectNotFoundException, MultiplePersistentObjectsFoundException {
 	 

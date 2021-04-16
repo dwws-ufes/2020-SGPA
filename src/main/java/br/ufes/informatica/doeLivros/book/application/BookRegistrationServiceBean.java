@@ -26,6 +26,8 @@ public class BookRegistrationServiceBean extends CrudServiceBean<Book> implement
 			return bookDAO;
 	}
 	
+	// Função que busca os livros de um usuário específico. Se Person for null,
+	// Retorna todos os livros cadastrados no sistema.
 	@Override
 	public List<Book> getBookList(Person donatedBy) {
 		List<Book> books = bookDAO.getBookListByDonor(donatedBy);
