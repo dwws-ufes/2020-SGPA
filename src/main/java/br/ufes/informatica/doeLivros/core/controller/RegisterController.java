@@ -63,6 +63,14 @@ public class RegisterController extends JSFController {
 	// Mas fará algumas checagens antes: senha digitada 2x corretamente e se o 
 	// endereço de email já está sendo utilizado.
 	public String register() {
+		
+		if (confirmPassword.matches(".*\\s+.*") || user.getPassword().matches(".*\\s+.*") ) {
+			FacesContext context = FacesContext.getCurrentInstance();
+			ResourceBundle bundle = context.getApplication().getResourceBundle(context, "msgsCore");
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, bundle.getString("signupForm.passwordBlank"), ""));
+			return null;
+		}
+		
 		if (confirmPassword.equals(user.getPassword())) {
 			try {
 				registerService.register(user);
