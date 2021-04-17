@@ -1,6 +1,6 @@
 # 2020-doeLivro
 
-Assignment for the 2021 edition of the "Web Development and the Semantic Web" course. by Bruno Legora, Bruno Machado, Jordana Reis, Luan Tome.
+Assignment for the 2020/02 edition of the "Web Development and the Semantic Web" course. by Bruno Legora, Bruno Machado, Jordana Reis, Luan Tome.
 
 A web-based information system that aggregates useful tools for people to share books for donation.
 
@@ -12,7 +12,7 @@ Instructions on how to deploy from scratch are listed below. If you need detaile
 
 2. Install [WildFly 22](http://wildfly.org) and create a Server configuration within Eclipse;
 
-3. Install [MySQL 8.0](http://www.mysql.com/products/community/) and create a schema called `vixcourts` and a user called `dwws` with password `dwws` and full access to the homonymous database;
+3. Install [MySQL 8.0](http://www.mysql.com/products/community/) and create a schema called `doeLivros` and a user called `dwws` with password `dwws` and full access to the homonymous database;
 
 4. Configure [the MySQL JDBC driver](http://dev.mysql.com/downloads/connector/j/) in WildFly;
 
@@ -31,7 +31,7 @@ Instructions on how to deploy from scratch are listed below. If you need detaile
 
 6. In Eclipse, use _File_ > _Import_ > _Git_ > _Projects from Git_ to import the Eclipse project existing in this repository;
 
-7. You might have to adjust the server settings in the imported project: right-click the _PoopTime_ project and select _Properties_. In the _Server_ section, select the _WildFly 13.x_ server. In the _Targeted Runtimes_ section, select the _WildFly 22 Runtime_;
+7. You might have to adjust the server settings in the imported project: right-click the doeLivros project and select _Properties_. In the _Server_ section, select the _WildFly 22 server. In the _Targeted Runtimes_ section, select the _WildFly 22 Runtime_;
 
 ## Tools
 
