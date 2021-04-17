@@ -40,7 +40,7 @@ public class RegisterServiceBean implements RegisterService {
 	// Função que checa se já existe um admin no sistema. Caso contrário, cria um usuário
 	// admin padrão.
 	@Override
-	public void checkAdminCreated() {
+	public void checkAdminCreated() throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		
 		 try {
 			 	roleDAO.retrieveByName(Role.ADMIN_ROLE_NAME); 
@@ -57,7 +57,7 @@ public class RegisterServiceBean implements RegisterService {
 		    	admin.setBirthDate(data);
 		    	admin.setRegistrationDate(data);
 		    	admin.setEmail("admin@doelivro.com");
-		    	admin.setPassword("admin");
+		    	admin.setPassword(TextUtils.produceBase64EncodedMd5Hash("admin"));
 //		    	admin.setTarget(target);
 		    	Set<Role> list = new HashSet<Role>();
 				list.add(role);
@@ -67,7 +67,7 @@ public class RegisterServiceBean implements RegisterService {
 		    } catch (MultiplePersistentObjectsFoundException e) {
 		      // This is a severe problem: the unique constraint has already been violated.
 		      throw new EJBException(e);
-		    }
+		    } 
 	}
 
 	// Função responsável pelo registro de um usuário no sistema. Caso não existe a role

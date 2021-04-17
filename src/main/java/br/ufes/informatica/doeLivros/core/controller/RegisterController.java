@@ -58,7 +58,7 @@ public class RegisterController extends JSFController {
 	
 	private Address bkpAddress;
 
-	public void checkAdminCreated() {
+	public void checkAdminCreated() throws NoSuchAlgorithmException, UnsupportedEncodingException, EncodeFailedException {
 		registerService.checkAdminCreated();
 	}
 	
