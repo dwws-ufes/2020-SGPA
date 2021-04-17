@@ -75,6 +75,13 @@ public class RegisterController extends JSFController {
 			return null;
 		}
 		
+		if (!user.getEmail().matches("^[A-Z0-9a-z._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")) {
+			FacesContext context = FacesContext.getCurrentInstance();
+			ResourceBundle bundle = context.getApplication().getResourceBundle(context, "msgsCore");
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, bundle.getString("signupForm.validEmail"), ""));
+			return null;
+		}
+		
 		if (confirmPassword.equals(user.getPassword())) {
 			try {
 				registerService.register(user);

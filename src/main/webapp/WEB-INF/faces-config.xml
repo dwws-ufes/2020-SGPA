@@ -26,6 +26,10 @@
 			<var>msgsBook</var>
 		</resource-bundle>
 		
+		<resource-bundle>
+			<base-name>br.ufes.informatica.doeLivros.core.view.admin</base-name>
+			<var>adm</var>
+		</resource-bundle>
 
 		<!-- Defines the default locale. -->
 		<locale-config>

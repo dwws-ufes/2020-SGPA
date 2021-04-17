@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.http.HttpSession;
@@ -98,7 +99,9 @@ public class AuthenticateController extends JSFController {
 	public void checkAlreadyLoggedin() throws IOException {
 	
 		if (this.user == null) {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("core/login/index.xhtml");
+			//FacesContext.getCurrentInstance().getExternalContext().redirect(VI "/core/login/index.xhtml");
+			ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+			context.redirect(context.getRequestContextPath()+"/core/login/index.xhtml");
 		}
 	}
 	

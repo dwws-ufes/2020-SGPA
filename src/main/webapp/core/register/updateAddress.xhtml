@@ -8,6 +8,7 @@
     template="/WEB-INF/templates/template.xhtml">
 	
 	<f:metadata>
+		<f:event type="preRenderView" listener="#{authenticateController.checkAlreadyLoggedin}" />
 		<f:event type="preRenderView"
 			listener="#{registerController.checkAddress}" />
 	</f:metadata>
