@@ -12,10 +12,10 @@ import br.ufes.informatica.doeLivros.book.domain.Book;
 import br.ufes.informatica.doeLivros.book.persistence.BookDAO;
 import br.ufes.informatica.doeLivros.people.domain.Person;
 
-
-@Stateless @PermitAll
+@Stateless
+@PermitAll
 public class BookRegistrationServiceBean extends CrudServiceBean<Book> implements BookRegistrationService {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	@EJB
@@ -23,9 +23,9 @@ public class BookRegistrationServiceBean extends CrudServiceBean<Book> implement
 
 	@Override
 	public BaseDAO<Book> getDAO() {
-			return bookDAO;
+		return bookDAO;
 	}
-	
+
 	// Função que busca os livros de um usuário específico. Se Person for null,
 	// Retorna todos os livros cadastrados no sistema.
 	@Override
@@ -33,6 +33,5 @@ public class BookRegistrationServiceBean extends CrudServiceBean<Book> implement
 		List<Book> books = bookDAO.getBookListByDonor(donatedBy);
 		return books;
 	}
-
 
 }

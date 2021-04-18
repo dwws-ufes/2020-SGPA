@@ -6,10 +6,7 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:adm="http://github.com/adminfaces"
     template="/WEB-INF/templates/template.xhtml">
-    
-    <f:metadata>
-		<f:event type="preRenderView" listener="#{authenticateController.checkAlreadyLoggedin}" />
-	</f:metadata>
+
 	
     <ui:define name="body">
 		<adm:breadcrumb link="/book/bookRegistration/index" title="#{msgsBook['bookRegistration.title']}" />    

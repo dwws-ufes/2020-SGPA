@@ -23,27 +23,28 @@ public class AuthenticateServiceBean implements AuthenticateService {
 	@EJB
 	private UserDAO userDAO;
 
-	// Método de autenticação. Ele recupera o usuário de acordo com o email fornecido
-	// E confere a senha. Se o usuário não existir ou a senha estiver errada, retorna nulo. 
+	// Método de autenticação. Ele recupera o usuário de acordo com o email
+	// fornecido
+	// E confere a senha. Se o usuário não existir ou a senha estiver errada,
+	// retorna nulo.
 	// Caso contrário, retorna o usuário associado ao e-mail.
 	@Override
 	public User authenticate(String email, String password) throws EncodeFailedException {
 		try {
-			 User user = this.userDAO.getUserByEmail(email);
-			 //if (password.compareTo(user.getPassword()) == 0) { TextUtils.produceBase64EncodedMd5Hash(password)
+			User user = this.userDAO.getUserByEmail(email);
+			// if (password.compareTo(user.getPassword()) == 0) {
+			// TextUtils.produceBase64EncodedMd5Hash(password)
 			if (TextUtils.produceBase64EncodedMd5Hash(password).compareTo(user.getPassword()) == 0) {
-				 return user;
-			 }
-			 else
-				 return null;
+				return user;
+			} else
+				return null;
 		} catch (PersistentObjectNotFoundException e) {
 			return null;
 		} catch (MultiplePersistentObjectsFoundException e) {
 			return null;
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-		 throw new EncodeFailedException(e);
+			throw new EncodeFailedException(e);
 		}
 	}
-	
 
 }

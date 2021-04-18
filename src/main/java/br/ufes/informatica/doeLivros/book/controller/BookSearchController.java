@@ -25,7 +25,7 @@ public class BookSearchController extends JSFController {
 	@EJB
 	private BookSearchService bookSearchService;
 
-	// A lista de livros que será preenchida pelo método de busca de livros e 
+	// A lista de livros que será preenchida pelo método de busca de livros e
 	// apresentada na página correspondente
 	private List<Book> bookList;
 
@@ -50,18 +50,25 @@ public class BookSearchController extends JSFController {
 	// O parâmetro de busca autor do livro. Pode ser nulo.
 	private String author;
 
-	// O método principal do controlador; ao ser chamado na página xhtml, o controlador irá se comunicar 
-	// com o serviço correspondente de busca de livros, que por sua vez irá entrar em contato com o 
-	// DAO, receberá a lista de livros correspondente do DAO, e retornará a lista de livros para o controlador
-	// Assim, a lista de livros é preenchida e o controlador retorna a página que o software deve apresentar .
+	// O método principal do controlador; ao ser chamado na página xhtml, o
+	// controlador irá se comunicar
+	// com o serviço correspondente de busca de livros, que por sua vez irá entrar
+	// em contato com o
+	// DAO, receberá a lista de livros correspondente do DAO, e retornará a lista de
+	// livros para o controlador
+	// Assim, a lista de livros é preenchida e o controlador retorna a página que o
+	// software deve apresentar .
 	// No caso, é a mesma página de origem.
 	public String getBookListPage() {
-		this.bookList = this.bookSearchService.getBookList(title, author, editor, publicationYear, genre, availabilityDate, donorName);
+		this.bookList = this.bookSearchService.getBookList(title, author, editor, publicationYear, genre,
+				availabilityDate, donorName);
 		return "index.xhtml?faces-redirect=true";
 	}
-	
-	// Getters e setters. Apenas a lista de livro não tem setter, pois ela será preenchida no método de busca de livors.
-	// OS demais precisam de getter e setter para troca de informações com a página web.
+
+	// Getters e setters. Apenas a lista de livro não tem setter, pois ela será
+	// preenchida no método de busca de livors.
+	// OS demais precisam de getter e setter para troca de informações com a página
+	// web.
 
 	/** Getter for bookList. */
 	public List<Book> getBookList() {

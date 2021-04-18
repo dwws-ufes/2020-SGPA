@@ -1,6 +1,5 @@
 package br.ufes.informatica.doeLivros.core.persistence;
 
-
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -39,20 +38,21 @@ public class RoleDAOJPA extends BaseJPADAO<Role> implements RoleDAO {
 		// FIXME: auto-generated method stub
 		return null;
 	}
-	
-	//Função que busca uma Role no banco de dados de acordo com o nome fornecido.
-	 @Override
-	 public Role retrieveByName(String name) throws PersistentObjectNotFoundException, MultiplePersistentObjectsFoundException {
-	 
-	    CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-	    CriteriaQuery<Role> cq = cb.createQuery(Role.class);
-	    Root<Role> root = cq.from(Role.class);
 
-	    EntityType<Role> model = root.getModel();
-	    cq.where(cb.equal(root.get(model.getSingularAttribute("name")), name));
-	    //cq.where(cb.equal(root.get(Role_.name), name));
-	    Role result = executeSingleResultQuery(cq, name);
-	    return result;
-	  }
+	// Função que busca uma Role no banco de dados de acordo com o nome fornecido.
+	@Override
+	public Role retrieveByName(String name)
+			throws PersistentObjectNotFoundException, MultiplePersistentObjectsFoundException {
+
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Role> cq = cb.createQuery(Role.class);
+		Root<Role> root = cq.from(Role.class);
+
+		EntityType<Role> model = root.getModel();
+		cq.where(cb.equal(root.get(model.getSingularAttribute("name")), name));
+		// cq.where(cb.equal(root.get(Role_.name), name));
+		Role result = executeSingleResultQuery(cq, name);
+		return result;
+	}
 
 }

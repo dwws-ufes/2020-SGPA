@@ -1,8 +1,8 @@
 package br.ufes.informatica.doeLivros.core.exceptions;
 
 public class EncodeFailedException extends Exception {
-	
-	 public EncodeFailedException(Exception e) {
+
+	public EncodeFailedException(Exception e) {
 		// TODO Auto-generated constructor stub
 	}
 

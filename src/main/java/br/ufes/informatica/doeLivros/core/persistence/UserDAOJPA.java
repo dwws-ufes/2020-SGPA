@@ -32,19 +32,21 @@ public class UserDAOJPA extends BaseJPADAO<User> implements UserDAO {
 		return entityManager;
 	}
 
-	// Método que busca um usuário no banco de dados de acordo com o endereço fornecido.
+	// Método que busca um usuário no banco de dados de acordo com o endereço
+	// fornecido.
 	// Retorna o usuário correspondente se ele existir.
 	@Override
-	public User getUserByEmail(String userEmail) throws PersistentObjectNotFoundException, MultiplePersistentObjectsFoundException {
-		
-	    CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-	    CriteriaQuery<User> cq = cb.createQuery(User.class);
-	    Root<User> root = cq.from(User.class);
+	public User getUserByEmail(String userEmail)
+			throws PersistentObjectNotFoundException, MultiplePersistentObjectsFoundException {
 
-	    EntityType<User> model = root.getModel();
-	    cq.where(cb.equal(root.get(model.getSingularAttribute("email")), userEmail));
-	    User result = executeSingleResultQuery(cq, userEmail);
-	    return result;
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<User> cq = cb.createQuery(User.class);
+		Root<User> root = cq.from(User.class);
+
+		EntityType<User> model = root.getModel();
+		cq.where(cb.equal(root.get(model.getSingularAttribute("email")), userEmail));
+		User result = executeSingleResultQuery(cq, userEmail);
+		return result;
 		// FIXME: auto-generated method stub
 	}
 
@@ -61,7 +63,7 @@ public class UserDAOJPA extends BaseJPADAO<User> implements UserDAO {
 		// FIXME: auto-generated method stub
 		return null;
 	}
-	
+
 	// Função que atualiza o usuário no banco de dados.
 	public User merge(User user) {
 		return entityManager.merge(user);

@@ -7,11 +7,8 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:adm="http://github.com/adminfaces"
     template="/WEB-INF/templates/template.xhtml">
-    
-    <f:metadata>
-		<f:event type="preRenderView" listener="#{authenticateController.checkAlreadyLoggedin}" />
-	</f:metadata>
-	
+
+
     <ui:define name="body">
 		<h:form id="entitiesForm">
 			<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank">

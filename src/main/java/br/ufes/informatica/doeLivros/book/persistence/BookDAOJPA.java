@@ -54,7 +54,8 @@ public class BookDAOJPA extends BaseJPADAO<Book> implements BookDAO {
 		return null;
 	}
 
-	// Método para buscar os livros de acordo com os parâmetros dados, que são opcionais
+	// Método para buscar os livros de acordo com os parâmetros dados, que são
+	// opcionais
 	@Override
 	public List<Book> getBookListWithParams(String author, String donorName, String genre, String title,
 			Date availabilityDate, String editor, Integer publicationYear) {
@@ -64,42 +65,43 @@ public class BookDAOJPA extends BaseJPADAO<Book> implements BookDAO {
 		Root<Book> root = cq.from(Book.class);
 
 		int count = 0;
-		count = (author!=null) ? count+1 : count;
-		count = (donorName!=null) ? count+1 : count;
-		count = (genre!=null) ? count+1 : count;
-		count = (title!=null) ? count+1 : count;
-		count = (availabilityDate!=null) ? count+1 : count;
-		count = (editor!=null) ? count+1 : count;
-		count = (publicationYear!=null) ? count+1 : count;
+		count = (author != null) ? count + 1 : count;
+		count = (donorName != null) ? count + 1 : count;
+		count = (genre != null) ? count + 1 : count;
+		count = (title != null) ? count + 1 : count;
+		count = (availabilityDate != null) ? count + 1 : count;
+		count = (editor != null) ? count + 1 : count;
+		count = (publicationYear != null) ? count + 1 : count;
 
 		Predicate[] predicates = new Predicate[count];
 
-		if (author != null) 
-			predicates[--count] = cb.equal(root.get("author"), author); 
-		if (donorName!=null) {
+		if (author != null)
+			predicates[--count] = cb.equal(root.get("author"), author);
+		if (donorName != null) {
 			Join<Book, Person> joinBookPerson = root.join("donatedBy");
-			predicates[--count] = cb.like(cb.concat(joinBookPerson.get("firstName"), joinBookPerson.get("lastName")),String.format("%c%s%c",'%',donorName,'%'));
-		} 
-		if (genre!=null)
-			predicates[--count] = cb.equal(root.get("genre"), genre); 
-		if (title!=null)
-			predicates[--count] = cb.equal(root.get("title"), title); 
-		if (availabilityDate!=null)
-			predicates[--count] = cb.equal(root.get("availabilityDate"), availabilityDate); 
-		if (editor!=null)
-			predicates[--count] = cb.equal(root.get("editor"), editor); 
-		if (publicationYear!=null)
-			predicates[--count] = cb.equal(root.get("publicationYear"), publicationYear); 
+			predicates[--count] = cb.like(cb.concat(joinBookPerson.get("firstName"), joinBookPerson.get("lastName")),
+					String.format("%c%s%c", '%', donorName, '%'));
+		}
+		if (genre != null)
+			predicates[--count] = cb.equal(root.get("genre"), genre);
+		if (title != null)
+			predicates[--count] = cb.equal(root.get("title"), title);
+		if (availabilityDate != null)
+			predicates[--count] = cb.equal(root.get("availabilityDate"), availabilityDate);
+		if (editor != null)
+			predicates[--count] = cb.equal(root.get("editor"), editor);
+		if (publicationYear != null)
+			predicates[--count] = cb.equal(root.get("publicationYear"), publicationYear);
 
 		cq.select(root).where(predicates);
-		Query query = entityManager.createQuery(cq); 
+		Query query = entityManager.createQuery(cq);
 
 		@SuppressWarnings("unchecked")
 		List<Book> results = query.getResultList(); // Isso dá warning
 		return results;
 	}
 
-	// Método para pegar os livros de acordo com um usuário específico 
+	// Método para pegar os livros de acordo com um usuário específico
 	// Ou todos os livros do sistmea (se o argumento for nulo)
 	@Override
 	public List<Book> getBookListByDonor(Person donatedBy) {
@@ -113,18 +115,18 @@ public class BookDAOJPA extends BaseJPADAO<Book> implements BookDAO {
 			Predicate[] predicates = new Predicate[1];
 
 			Join<Book, Person> joinBookPerson = root.join("donatedBy");
-			predicates[0] = cb.equal(joinBookPerson.get("id"), donatedBy.getId()); 
+			predicates[0] = cb.equal(joinBookPerson.get("id"), donatedBy.getId());
 
-			//cq.where(cb.equal(root.get("donatedBy"), donatedBy));//   root.get("donatedBy").in(donatedBy));
+			// cq.where(cb.equal(root.get("donatedBy"), donatedBy));//
+			// root.get("donatedBy").in(donatedBy));
 
 			cq.select(root).where(predicates);
-		}
-		else {
+		} else {
 			cq.select(root);
 		}
 		cq.orderBy(cb.asc(root.get("title")));
 
-		Query query = entityManager.createQuery(cq); 
+		Query query = entityManager.createQuery(cq);
 
 		@SuppressWarnings("unchecked")
 		List<Book> bookList = query.getResultList();

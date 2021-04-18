@@ -19,12 +19,15 @@ public class BookSearchServiceBean implements BookSearchService {
 	@EJB
 	private BookDAO bookDAO;
 
-	// Método de busca de livros. Irá ser chamado pelo controlador, e irá solicitar ao DAO a lista 
-	// de livros de acordo com os parâmetros informados. A lista será retornada para o controlador.
+	// Método de busca de livros. Irá ser chamado pelo controlador, e irá solicitar
+	// ao DAO a lista
+	// de livros de acordo com os parâmetros informados. A lista será retornada para
+	// o controlador.
 	@Override
 	public List<Book> getBookList(String title, String author, String editor, Integer publicationYear, String genre,
 			Date availabilityDate, String donorName) {
-		return this.bookDAO.getBookListWithParams(author, donorName, genre, title, availabilityDate, editor, publicationYear);
+		return this.bookDAO.getBookListWithParams(author, donorName, genre, title, availabilityDate, editor,
+				publicationYear);
 	}
 
 }

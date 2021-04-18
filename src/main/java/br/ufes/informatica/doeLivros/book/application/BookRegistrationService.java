@@ -13,5 +13,5 @@ import br.ufes.informatica.doeLivros.people.domain.Person;
 public interface BookRegistrationService extends CrudService<Book> {
 
 	public List<Book> getBookList(Person donatedBy);
-	
+
 }

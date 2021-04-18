@@ -12,7 +12,8 @@ import br.ufes.informatica.doeLivros.book.domain.Book;
 @Local
 public interface BookSearchService extends Serializable {
 
-	// declaração do método de busca de livros. Irá ser chamado pelo controlador e irá entrar em contato com o DAO 
+	// declaração do método de busca de livros. Irá ser chamado pelo controlador e
+	// irá entrar em contato com o DAO
 	// para recuperar a lista de livros de acordo com os parâmetros informados.
 	public List<Book> getBookList(String title, String author, String editor, Integer publicationYear, String genre,
 			Date availabilityDate, String donorName);
