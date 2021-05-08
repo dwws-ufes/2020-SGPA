@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
- 
+
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
- 
+
 	<groupId>br.ufes.informatica</groupId>
 	<artifactId>doeLivros</artifactId>
 	<version>1.0</version>
@@ -48,12 +48,6 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.jena</groupId>
-			<artifactId>apache-jena-libs</artifactId>
-			<type>pom</type>
-			<version>4.0.0</version>
-		</dependency>
-		<dependency>
 			<groupId>com.github.adminfaces</groupId>
 			<artifactId>admin-template</artifactId>
 			<version>1.1.0</version>
@@ -62,6 +56,12 @@
 			<groupId>br.ufes.inf.nemo</groupId>
 			<artifactId>jbutler-wp</artifactId>
 			<version>1.2.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.jena</groupId>
+			<artifactId>apache-jena-libs</artifactId>
+			<type>pom</type>
+			<version>4.0.0</version>
 		</dependency>
 	</dependencies>
 

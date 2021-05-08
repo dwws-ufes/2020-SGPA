@@ -7,6 +7,12 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QuerySolution;
+import org.apache.jena.query.ResultSet;
+import org.apache.jena.rdf.model.Literal;
+
 import br.ufes.inf.nemo.jbutler.ejb.controller.JSFController;
 import br.ufes.informatica.doeLivros.book.application.BookSearchService;
 import br.ufes.informatica.doeLivros.book.domain.Book;
@@ -143,6 +149,51 @@ public class BookSearchController extends JSFController {
 	/** Setter for author. */
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	private int selectedId;
+
+	public String getDescription(int id) {
+		selectedId = id;
+//		System.out.println(">>>>" + id);
+		return "description.xhtml?faces-redirect=true";
+	}
+
+
+	public String getAbstract() {
+		String bookName = bookList.get(selectedId).getTitle();
+		String init = "Showing abstract for the book entitled: ";
+
+		if (bookName != null && bookName.length() > 3) {
+			String query = "PREFIX dbp: <http://dbpedia.org/property/>\n"
+					+ "PREFIX dbo: <http://dbpedia.org/ontology/>\n"
+					+ "PREFIX bibo: <http://purl.org/ontology/bibo/>\n"
+					+ "PREFIX schema: <http://schema.org/>\n"
+					+ "SELECT DISTINCT ?abstract ?name \n" 
+					+ "WHERE {\n"
+					+ "VALUES ?type {dbo:Book bibo:Book schema:Book dbp:Book}\n"
+					+ "?book a ?type;\n"
+					+ "dbp:name ?name;\n"
+					+ "dbo:abstract ?abstract.\n"
+					+ "FILTER (regex(?name,\"^" +
+					bookName 
+					+ ".*\", \"i\") && langMatches(lang(?abstract), \"EN\"))\n"
+					+ "}";
+			QueryExecution queryExecution =
+					QueryExecutionFactory.sparqlService("https://dbpedia.org/sparql",
+							query);
+			ResultSet results = queryExecution.execSelect();
+			if (results.hasNext()) {
+				QuerySolution querySolution = results.next();
+				Literal abstractLiteral = querySolution.getLiteral("abstract");
+				Literal nameLiteral = querySolution.getLiteral("name");
+				return init + nameLiteral + "\n\n" + abstractLiteral.getValue();
+			}	
+			else
+				return "Abstract not found";
+		}
+		return "Abstract not found";
+
 	}
 
 }

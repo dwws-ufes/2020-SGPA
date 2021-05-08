@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:adm="http://github.com/adminfaces"
+    xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+    template="/WEB-INF/templates/template.xhtml">
+	
+    <ui:define name="title">
+        <h:outputText value="#{msgsCore['bookSearch.title']}" />
+    </ui:define>
+
+    <ui:define name="description">
+        <h:outputText value="#{msgsCore['bookSearch.title.description']}" />
+    </ui:define>
+
+    <ui:define name="body">
+		<adm:breadcrumb link="/book/search/index" title="#{msgsCore['bookSearch.title']}" />
+		
+		<h:outputText value="#{fn:replace(bookSearchController.getAbstract(),'\\n','&lt;br/&gt;')}" escape="false" />
+		
+    
+    </ui:define>
+</ui:composition>

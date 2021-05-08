@@ -32,6 +32,9 @@
 				<p:outputLabel for="genreField" value="#{msgsBook['bookRegistration.field.genre']}" />
 				<p:inputText id="genreField" value="#{bookRegistrationController.selectedEntity.genre}" style="width: 50%;" />
 				
+				<p:outputLabel for="editionField" value="#{msgsBook['bookRegistration.field.edition']}" />
+				<p:inputText id="editionField" value="#{bookRegistrationController.selectedEntity.edition}" style="width: 50%;" />
+				
 				<p:outputLabel for="availabilityDateField" value="#{msgsBook['bookRegistration.field.availabilityDate']}" />
 				<p:calendar id="availabilityDateField" value="#{bookRegistrationController.selectedEntity.availabilityDate}" 
 					showOn="button" pattern="dd/MM/yyyy" mask="true" style="width: 100%;" required="true"/>	
