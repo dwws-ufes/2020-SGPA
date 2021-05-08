@@ -7,6 +7,10 @@
     xmlns:adm="http://github.com/adminfaces"
     template="/WEB-INF/templates/template.xhtml">
 	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{authenticateController.checkAlreadyLoggedin}" />
+	</f:metadata>
+	
     <ui:define name="title">
         <h:outputText value="#{msgsCore['bookSearch.title']}" />
     </ui:define>
@@ -14,11 +18,13 @@
     <ui:define name="description">
         <h:outputText value="#{msgsCore['bookSearch.title.description']}" />
     </ui:define>
+	
+	
 
     <ui:define name="body">
 		<adm:breadcrumb link="/book/search/index" title="#{msgsCore['bookSearch.title']}" />
 		<h:form id="formBookSearch">
-		
+			<a style="float: right;" href="#{facesContext.externalContext.requestContextPath}/data/tourpackages">RDF/XML</a>
 			<h:outputText value="#{msgsCore['bookSearch.field.title']}" />: <p:inputText id="title" value="#{bookSearchController.title}" /><p></p>
 			<h:outputText value="#{msgsCore['bookSearch.field.author']}" />: <p:inputText id="author" value="#{bookSearchController.author}" /><p></p>
 			<h:outputText value="#{msgsCore['bookSearch.field.editor']}" />: <p:inputText id="editor" value="#{bookSearchController.editor}" /><p></p>
@@ -69,4 +75,4 @@
 		</h:form>
     
     </ui:define>
-</ui:composition>
+</ui:composition>  
