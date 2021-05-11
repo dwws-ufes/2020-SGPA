@@ -27,6 +27,11 @@
 		</resource-bundle>
 		
 		<resource-bundle>
+			<base-name>br.ufes.informatica.doeLivros.libraries.view.messages</base-name>
+			<var>msgsLibraries</var>
+		</resource-bundle>
+		
+		<resource-bundle>
 			<base-name>br.ufes.informatica.doeLivros.core.view.admin</base-name>
 			<var>adm</var>
 		</resource-bundle>
