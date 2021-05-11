@@ -6,26 +6,26 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:adm="http://github.com/adminfaces"
     template="/WEB-INF/templates/template.xhtml">
-	
-	<f:metadata>
-		<f:event type="preRenderView" listener="#{authenticateController.checkAlreadyLoggedin}" />
-	</f:metadata>
-	
+
     <ui:define name="title">
-        <h:outputText value="#{msgsCore['publicLibrariesSearch.title']}" />
+        <h:outputText value="#{msgsLibraries['publicLibrariesSearch.title']}" />
     </ui:define>
 
-    <ui:define name="description">
-        <h:outputText value="#{msgsCore['publicLibrariesSearch.title.description']}" />
-    </ui:define>
-
-    <ui:define name="body">
-		<adm:breadcrumb link="/core/registration/index" title="#{msgsCore['publicLibrariesSearch.title']}" />
-		<p:dataTable id="librariesList" value="#{publicLibrariesSearchController.librariesList}" /><h:form id="formPublicLibrariesSearch">
+	<ui:define name="body">
+		<adm:breadcrumb link="/core/registration/index" title="#{msgsLibraries['publicLibrariesSearch.title']}" />
 		
-			<p:commandButton value="submit" action="#{publicLibrariesSearchController.}" />
-			
-		</h:form>
-    
+		<h:form id="formPublicLibrariesSearch">
+			<p:commandButton value="refresh" action="#{publicLibrariesSearchController.getLibrariesList}"/>
+		
+		
+			<p:dataTable id="librariesList" var="entity" value="#{publicLibrariesSearchController.librariesList}">	
+				
+				<p:column headerText="#{msgsLibraries['publicLibrariesSearch.field.name']}">
+					<h:outputText value="#{entity.name}" />
+				</p:column>
+				
+			</p:dataTable>
+	    </h:form>
     </ui:define>
+    
 </ui:composition>
