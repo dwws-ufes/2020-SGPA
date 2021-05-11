@@ -10,6 +10,10 @@
     <ui:define name="title">
         <h:outputText value="#{msgsLibraries['publicLibrariesSearch.title']}" />
     </ui:define>
+    
+    <ui:define name="description">
+        <h:outputText value="#{msgsLibraries['publicLibrariesSearch.description']}" />
+    </ui:define>
 
 	<ui:define name="body">
 		<adm:breadcrumb link="/core/registration/index" title="#{msgsLibraries['publicLibrariesSearch.title']}" />
@@ -18,7 +22,10 @@
 			<p:commandButton value="refresh" action="#{publicLibrariesSearchController.getLibrariesList}"/>
 		
 		
-			<p:dataTable id="librariesList" var="entity" value="#{publicLibrariesSearchController.librariesList}">	
+			<p:dataTable id="librariesList" var="entity" value="#{publicLibrariesSearchController.librariesList}"
+				paginator="true" rows="30"
+				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="15,30,60" paginatorPosition="bottom">	
 				
 				<p:column headerText="#{msgsLibraries['publicLibrariesSearch.field.name']}">
 					<h:outputText value="#{entity.name}" />
