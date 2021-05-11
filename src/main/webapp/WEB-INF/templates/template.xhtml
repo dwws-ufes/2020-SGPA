@@ -65,6 +65,15 @@
 						value="#{msgsCore['core.menu.bookRegistration']}" /></span>
 			</p:link></li>
 			
+			<li class="header"><h:outputText
+					value="#{msgsCore['core.menu.librariesArea']}" /></li>
+			<li><p:link outcome="/libraries/search/index" 
+					onclick="clearBreadCrumbs()">
+					<i class="fa fa-institution"></i>
+					<span><h:outputText
+							value="#{msgsCore['core.menu.librariesSearch']}" /></span>
+				</p:link></li>
+			
 			<h:panelGroup rendered="#{(authenticateController.user.rolesList.iterator().next().name == 'Admin')}">
 			<li class="header"><h:outputText
 					value="#{msgsCore['core.menu.admin']}" /></li>
