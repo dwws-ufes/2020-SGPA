@@ -29,6 +29,7 @@ public class PublicLibrariesSearchServiceBean implements PublicLibrariesSearchSe
 			
 		List<Library> lista = new ArrayList<Library>();
 		Library library = null;
+		String hrefGoogleMaps = "";
 
 		javax.ws.rs.client.Client client = ClientBuilder.newClient();
         WebTarget webTarget = client.target("http://bibliotecas.cultura.gov.br/api/space/find?@select=id,name,location");
@@ -44,6 +45,14 @@ public class PublicLibrariesSearchServiceBean implements PublicLibrariesSearchSe
         	library = new Library();
         	
         	library.setName(everyJb.getString("name"));
+        	
+        	JSONObject locat = everyJb.getJSONObject("location");
+        	library.setLatitude (locat.getDouble("latitude"));
+        	library.setLongitude (locat.getDouble("longitude"));
+        	
+        	hrefGoogleMaps = "https://www.google.com/maps/search/?api=1&query="+library.getLatitude()+","+library.getLongitude();
+        	
+        	library.setLinkGoogleMaps(hrefGoogleMaps);
         	
         	lista.add(i, library);
         }

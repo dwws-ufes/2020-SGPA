@@ -19,16 +19,23 @@
 		<adm:breadcrumb link="/core/registration/index" title="#{msgsLibraries['publicLibrariesSearch.title']}" />
 		
 		<h:form id="formPublicLibrariesSearch">
-			<p:commandButton value="refresh" action="#{publicLibrariesSearchController.getLibrariesList}"/>
+			<p>
+				<p:commandButton value="refresh" action="#{publicLibrariesSearchController.getLibrariesList}"/>
+			</p>
 		
-		
-			<p:dataTable id="librariesList" var="entity" value="#{publicLibrariesSearchController.librariesList}"
+			<p:dataTable id="librariesList" var="entity" value="#{publicLibrariesSearchController.librariesList}" rowIndexVar="hrefGoogleMaps"
 				paginator="true" rows="30"
 				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rowsPerPageTemplate="15,30,60" paginatorPosition="bottom">	
 				
-				<p:column headerText="#{msgsLibraries['publicLibrariesSearch.field.name']}">
-					<h:outputText value="#{entity.name}" />
+				<p:column headerText="#{msgsLibraries['publicLibrariesSearch.field.name']}" style="width:80%">
+					<h:outputText value="#{entity.name}" />					
+				</p:column>
+				
+				<p:column headerText="#{msgsLibraries['publicLibrariesSearch.field.map']}" style="width:20%">
+					<a href="#{entity.linkGoogleMaps}" target="_blank">
+						<i class="fa fa-map-marker" ></i>
+					</a>					 
 				</p:column>
 				
 			</p:dataTable>

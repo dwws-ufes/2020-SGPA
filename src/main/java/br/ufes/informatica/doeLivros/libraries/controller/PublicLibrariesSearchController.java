@@ -37,5 +37,5 @@ public class PublicLibrariesSearchController extends JSFController {
 	public void setLibrariesList(List<Library> librariesList) {
 		this.librariesList = librariesList;
 	}
-
+	
 }
