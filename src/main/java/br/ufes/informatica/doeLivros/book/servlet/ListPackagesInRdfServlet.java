@@ -62,7 +62,7 @@ private static final DateFormat df = new SimpleDateFormat("yyyy-MMdd'T'HH:mm:ss"
 		Property foafPerson = ResourceFactory.createProperty(foafNS + "Person");
 		Property biboEditor = ResourceFactory.createProperty(biboNS + "editor");
 		Property dboLiteratureGenre = ResourceFactory.createProperty(dboNS + "LiteratureGenre");
-//		Property biboEdition = ResourceFactory.createProperty(biboNS + "edition");
+		Property biboEdition = ResourceFactory.createProperty(biboNS + "edition");
 		Property biboVolume = ResourceFactory.createProperty(biboNS + "volume");
 		Property foafName = ResourceFactory.createProperty(foafNS + "name");
 		Property dctermsTitle = ResourceFactory.createProperty(dcTermsNS + "title");
@@ -77,8 +77,8 @@ private static final DateFormat df = new SimpleDateFormat("yyyy-MMdd'T'HH:mm:ss"
 					.addLiteral(biboVolume, 
 							ResourceFactory.createTypedLiteral(pack.getVolume()))
 					.addProperty(dboLiteratureGenre, pack.getGenre())
-//					.addLiteral(biboEdition, 
-//							ResourceFactory.createTypedLiteral(pack.getEdition()))
+					.addLiteral(biboEdition, 
+							ResourceFactory.createTypedLiteral(pack.getEdition()))
 					.addProperty(biboEditor, model.createResource()
 							.addProperty(foafName, pack.getEditor()))
 					.addProperty(foafPerson, model.createResource()
